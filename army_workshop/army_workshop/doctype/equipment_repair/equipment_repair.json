@@ -1,0 +1,292 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-10-18 23:07:03.598126",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "repair_category",
+  "equipment_data_section",
+  "equipment_name",
+  "army_number",
+  "unit_name",
+  "column_break_wszzd",
+  "equipment_model",
+  "chassis_number",
+  "entry_date",
+  "delegated_data_section",
+  "delegated_name",
+  "delegated_army_number",
+  "column_break_lnxgf",
+  "degree__grade",
+  "mobile_phone",
+  "section_break_fogg4",
+  "administration_approval_category",
+  "with_administration_approval_section",
+  "mission_letter",
+  "administration_approval",
+  "equipment_log__certificate",
+  "form_3at",
+  "form4at",
+  "section_break_rhh26",
+  "deduction_acceptance_form",
+  "id_card_copy",
+  "certificate_of_repair_completion",
+  "work_order_number",
+  "work_order_date",
+  "without_administration_approval_section",
+  "work_order_number1",
+  "certificate_of_repair_completion1",
+  "column_break_jlvq3",
+  "work_order_date1"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "options": ".YY..MM.-0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "repair_category",
+   "fieldtype": "Select",
+   "label": "Repair Category",
+   "options": "\nWorkshop Repair\nOutside Repair"
+  },
+  {
+   "fieldname": "equipment_data_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment Data"
+  },
+  {
+   "fieldname": "equipment_name",
+   "fieldtype": "Link",
+   "label": "Equipment Name",
+   "options": "Equipment"
+  },
+  {
+   "fetch_from": "equipment_name.army_number",
+   "fieldname": "army_number",
+   "fieldtype": "Data",
+   "label": "Army Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "equipment_name.unit_name",
+   "fieldname": "unit_name",
+   "fieldtype": "Data",
+   "label": "Unit Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_wszzd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "equipment_name.equipment_model",
+   "fieldname": "equipment_model",
+   "fieldtype": "Data",
+   "label": "Equipment Model",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "equipment_name.chassis_number",
+   "fieldname": "chassis_number",
+   "fieldtype": "Data",
+   "label": "Chassis Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delegated_data_section",
+   "fieldtype": "Section Break",
+   "label": "Delegated Data"
+  },
+  {
+   "fieldname": "delegated_name",
+   "fieldtype": "Link",
+   "label": "Delegated Name",
+   "options": "Delegate"
+  },
+  {
+   "fetch_from": "delegated_name.delegated_army_number",
+   "fieldname": "delegated_army_number",
+   "fieldtype": "Data",
+   "label": "Delegated Army Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_lnxgf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "delegated_name.degree__grade",
+   "fieldname": "degree__grade",
+   "fieldtype": "Data",
+   "label": "Degree / Grade",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "delegated_name.mobile_phone",
+   "fieldname": "mobile_phone",
+   "fieldtype": "Data",
+   "label": "Mobile Phone",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_fogg4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "administration_approval_category",
+   "fieldtype": "Select",
+   "label": "Administration Approval Category",
+   "options": "\nWith Administration Approval\nWithout Administration Approval"
+  },
+  {
+   "depends_on": "function(doc) {\r\n    return doc.administration_approval_category === \"With Administration Approval\";\r\n}",
+   "fieldname": "with_administration_approval_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "With Administration Approval"
+  },
+  {
+   "default": "0",
+   "fieldname": "mission_letter",
+   "fieldtype": "Check",
+   "label": "Mission Letter"
+  },
+  {
+   "default": "0",
+   "fieldname": "administration_approval",
+   "fieldtype": "Check",
+   "label": "Administration Approval"
+  },
+  {
+   "default": "0",
+   "fieldname": "equipment_log__certificate",
+   "fieldtype": "Check",
+   "label": "Equipment Log / Certificate"
+  },
+  {
+   "default": "0",
+   "fieldname": "form_3at",
+   "fieldtype": "Check",
+   "label": "Form 3AT"
+  },
+  {
+   "default": "0",
+   "fieldname": "form4at",
+   "fieldtype": "Check",
+   "label": "Form 4AT"
+  },
+  {
+   "default": "0",
+   "fieldname": "deduction_acceptance_form",
+   "fieldtype": "Check",
+   "label": "Deduction Acceptance Form"
+  },
+  {
+   "fieldname": "section_break_rhh26",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "id_card_copy",
+   "fieldtype": "Check",
+   "label": "ID Card Copy"
+  },
+  {
+   "default": "0",
+   "fieldname": "certificate_of_repair_completion",
+   "fieldtype": "Check",
+   "label": "Certificate of Repair Completion"
+  },
+  {
+   "default": "0",
+   "fieldname": "work_order_number",
+   "fieldtype": "Check",
+   "label": "Work Order Number"
+  },
+  {
+   "default": "0",
+   "fieldname": "work_order_date",
+   "fieldtype": "Check",
+   "label": "Work Order Date"
+  },
+  {
+   "fieldname": "without_administration_approval_section",
+   "fieldtype": "Section Break",
+   "label": "Without Administration Approval"
+  },
+  {
+   "default": "0",
+   "fieldname": "work_order_number1",
+   "fieldtype": "Check",
+   "label": "Work Order Number"
+  },
+  {
+   "default": "0",
+   "fieldname": "certificate_of_repair_completion1",
+   "fieldtype": "Check",
+   "label": "Certificate of Repair Completion"
+  },
+  {
+   "fieldname": "column_break_jlvq3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "function checkApproval(doc) {\r\n    return doc && \r\n           doc.administration_approval_category && \r\n           doc.administration_approval_category.toLowerCase() === \"with administration approval\";\r\n}",
+   "fieldname": "work_order_date1",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Work Order Date"
+  },
+  {
+   "fieldname": "entry_date",
+   "fieldtype": "Date",
+   "label": "Entry Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-21 13:07:13.275599",
+ "modified_by": "Administrator",
+ "module": "Army Workshop",
+ "name": "Equipment Repair",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0625\u062c\u0631\u0627\u0621\u0627\u062a",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
