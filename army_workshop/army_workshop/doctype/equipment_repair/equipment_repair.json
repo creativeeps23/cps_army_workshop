@@ -10,6 +10,11 @@
  "field_order": [
   "naming_series",
   "repair_category",
+  "status",
+  "column_break_owipr",
+  "repair_type",
+  "group_section",
+  "group_type",
   "equipment_data_section",
   "equipment_name",
   "army_number",
@@ -28,21 +33,33 @@
   "administration_approval_category",
   "with_administration_approval_section",
   "mission_letter",
-  "administration_approval",
-  "equipment_log__certificate",
-  "form_3at",
-  "form4at",
-  "section_break_rhh26",
-  "deduction_acceptance_form",
-  "id_card_copy",
   "certificate_of_repair_completion",
   "work_order_number",
+  "section_break_rhh26",
+  "administration_approval",
+  "deduction_acceptance_form",
   "work_order_date",
+  "column_break_z9lev",
+  "equipment_log__certificate",
+  "id_card_copy",
+  "column_break_r6bao",
+  "form_3at",
+  "form4at",
   "without_administration_approval_section",
   "work_order_number1",
-  "certificate_of_repair_completion1",
   "column_break_jlvq3",
-  "work_order_date1"
+  "certificate_of_repair_completion1",
+  "column_break_5zkxz",
+  "work_order_date1",
+  "section_break_v7cle",
+  "team_data",
+  "technical_team",
+  "\u0623\u0639\u0645\u0627\u0644_\u0627\u0644\u0625\u0635\u0644\u0627\u062d_tab",
+  "mechanic",
+  "electric",
+  "others",
+  "\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_tab",
+  "\u0628\u064a\u0627\u0646_\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_\u0627\u0644\u0645\u0646\u0635\u0631\u0641\u0629"
  ],
  "fields": [
   {
@@ -54,8 +71,10 @@
   {
    "fieldname": "repair_category",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Repair Category",
-   "options": "\nWorkshop Repair\nOutside Repair"
+   "options": "\nWorkshop Repair\nOutside Repair",
+   "reqd": 1
   },
   {
    "fieldname": "equipment_data_section",
@@ -147,10 +166,8 @@
    "options": "\nWith Administration Approval\nWithout Administration Approval"
   },
   {
-   "depends_on": "function(doc) {\r\n    return doc.administration_approval_category === \"With Administration Approval\";\r\n}",
    "fieldname": "with_administration_approval_section",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "label": "With Administration Approval"
   },
   {
@@ -208,13 +225,13 @@
   {
    "default": "0",
    "fieldname": "work_order_number",
-   "fieldtype": "Check",
+   "fieldtype": "Data",
    "label": "Work Order Number"
   },
   {
    "default": "0",
    "fieldname": "work_order_date",
-   "fieldtype": "Check",
+   "fieldtype": "Data",
    "label": "Work Order Date"
   },
   {
@@ -240,21 +257,106 @@
   },
   {
    "default": "0",
-   "depends_on": "function checkApproval(doc) {\r\n    return doc && \r\n           doc.administration_approval_category && \r\n           doc.administration_approval_category.toLowerCase() === \"with administration approval\";\r\n}",
    "fieldname": "work_order_date1",
    "fieldtype": "Check",
-   "hidden": 1,
    "label": "Work Order Date"
   },
   {
    "fieldname": "entry_date",
    "fieldtype": "Date",
    "label": "Entry Date"
+  },
+  {
+   "fieldname": "column_break_z9lev",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_r6bao",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_5zkxz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_owipr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "repair_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Repair Type",
+   "options": "\nEquipment\nPart",
+   "reqd": 1
+  },
+  {
+   "fieldname": "group_type",
+   "fieldtype": "Data",
+   "label": "Group Type"
+  },
+  {
+   "fieldname": "group_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\n\u062c\u0627\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d\n\u062a\u0645 \u0627\u0644\u0625\u0635\u0644\u0627\u062d"
+  },
+  {
+   "fieldname": "section_break_v7cle",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "team_data",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "technical_team",
+   "fieldtype": "Table",
+   "label": "\u0628\u064a\u0627\u0646\u0627\u062a \u0642\u0627\u0626\u062f \u0648\u0637\u0627\u0642\u0645 \u0627\u0644\u0625\u0635\u0644\u0627\u062d \u0644\u0644\u0645\u0623\u0645\u0648\u0631\u064a\u0629",
+   "options": "Technical Team List"
+  },
+  {
+   "fieldname": "\u0623\u0639\u0645\u0627\u0644_\u0627\u0644\u0625\u0635\u0644\u0627\u062d_tab",
+   "fieldtype": "Tab Break",
+   "label": "\u0623\u0639\u0645\u0627\u0644 \u0627\u0644\u0625\u0635\u0644\u0627\u062d"
+  },
+  {
+   "fieldname": "mechanic",
+   "fieldtype": "Table",
+   "label": "\u0623\u0639\u0645\u0627\u0644 \u0627\u0644\u0645\u064a\u0643\u0627\u0646\u064a\u0643\u0627",
+   "options": "Actions"
+  },
+  {
+   "fieldname": "electric",
+   "fieldtype": "Table",
+   "label": "\u0623\u0639\u0645\u0627\u0644 \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621",
+   "options": "Actions"
+  },
+  {
+   "fieldname": "others",
+   "fieldtype": "Table",
+   "label": "\u0623\u0639\u0645\u0627\u0644 \u062a\u0643\u0645\u064a\u0644\u064a\u0629",
+   "options": "Actions"
+  },
+  {
+   "fieldname": "\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_tab",
+   "fieldtype": "Tab Break",
+   "label": "\u0642\u0637\u0639 \u0627\u0644\u063a\u064a\u0627\u0631"
+  },
+  {
+   "fieldname": "\u0628\u064a\u0627\u0646_\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_\u0627\u0644\u0645\u0646\u0635\u0631\u0641\u0629",
+   "fieldtype": "Table",
+   "label": "\u0628\u064a\u0627\u0646 \u0642\u0637\u0639 \u0627\u0644\u063a\u064a\u0627\u0631 \u0627\u0644\u0645\u0646\u0635\u0631\u0641\u0629",
+   "options": "Workshop Items"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-21 13:07:13.275599",
+ "modified": "2025-10-21 16:02:37.534338",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment Repair",

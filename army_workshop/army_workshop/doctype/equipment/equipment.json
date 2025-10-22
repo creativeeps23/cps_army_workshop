@@ -121,7 +121,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-21 12:03:08.911652",
+ "modified": "2025-10-21 13:57:48.159207",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment",
@@ -153,7 +153,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "equipment_name"
 }
