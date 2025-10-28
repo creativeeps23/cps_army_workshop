@@ -13,14 +13,14 @@
   "chassis_number",
   "army_number",
   "department",
-  "formation",
+  "unit_name",
   "manufacturer",
   "column_break_zray3",
   "equipment_model",
   "issuance_date",
   "serial_number",
-  "unit_name",
   "location",
+  "subunit",
   "model",
   "page_number"
  ],
@@ -36,23 +36,20 @@
    "fieldname": "equipment_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Equipment Name",
-   "reqd": 1
+   "label": "Equipment Name"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "equipment_model",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Equipment Model",
-   "reqd": 1
+   "label": "Equipment Model"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "army_number",
    "fieldtype": "Data",
-   "label": "Army Number",
-   "reqd": 1
+   "label": "Army Number"
   },
   {
    "allow_in_quick_entry": 1,
@@ -69,20 +66,16 @@
   {
    "allow_in_quick_entry": 1,
    "fieldname": "department",
-   "fieldtype": "Data",
-   "label": "Department"
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Army Department"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "location",
-   "fieldtype": "Data",
-   "label": "Location"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "formation",
-   "fieldtype": "Data",
-   "label": "Formation"
+   "fieldtype": "Link",
+   "label": "Location",
+   "options": "Army Location"
   },
   {
    "fieldname": "column_break_zray3",
@@ -91,8 +84,9 @@
   {
    "allow_in_quick_entry": 1,
    "fieldname": "manufacturer",
-   "fieldtype": "Data",
-   "label": "Manufacturer"
+   "fieldtype": "Link",
+   "label": "Manufacturer",
+   "options": "Manufacture"
   },
   {
    "allow_in_quick_entry": 1,
@@ -117,11 +111,16 @@
    "fieldname": "page_number",
    "fieldtype": "Data",
    "label": "Page Number"
+  },
+  {
+   "fieldname": "subunit",
+   "fieldtype": "Data",
+   "label": "Subunit"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-21 13:57:48.159207",
+ "modified": "2025-10-26 02:59:23.203927",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment",
