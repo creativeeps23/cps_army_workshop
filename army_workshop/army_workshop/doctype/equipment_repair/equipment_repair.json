@@ -19,6 +19,10 @@
   "equipment_name",
   "army_number",
   "unit_name",
+  "subunit",
+  "department",
+  "location",
+  "manufacture",
   "column_break_wszzd",
   "equipment_model",
   "chassis_number",
@@ -59,7 +63,8 @@
   "electric",
   "others",
   "\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_tab",
-  "\u0628\u064a\u0627\u0646_\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_\u0627\u0644\u0645\u0646\u0635\u0631\u0641\u0629"
+  "\u0628\u064a\u0627\u0646_\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_\u0627\u0644\u0645\u0646\u0635\u0631\u0641\u0629",
+  "leave_date"
  ],
  "fields": [
   {
@@ -287,7 +292,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Repair Type",
-   "options": "\nEquipment\nPart",
+   "options": "\n\u0645\u0639\u062f\u0629\n\u0645\u062c\u0645\u0648\u0639\u0629",
    "reqd": 1
   },
   {
@@ -352,11 +357,43 @@
    "fieldtype": "Table",
    "label": "\u0628\u064a\u0627\u0646 \u0642\u0637\u0639 \u0627\u0644\u063a\u064a\u0627\u0631 \u0627\u0644\u0645\u0646\u0635\u0631\u0641\u0629",
    "options": "Workshop Items"
+  },
+  {
+   "fetch_from": "equipment_name.subunit",
+   "fieldname": "subunit",
+   "fieldtype": "Data",
+   "label": "Subunit",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "equipment_name.subunit",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "equipment_name.location",
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location",
+   "read_only": 1
+  },
+  {
+   "fieldname": "leave_date",
+   "fieldtype": "Date",
+   "label": "leave_date"
+  },
+  {
+   "fetch_from": "equipment_name.manufacturer",
+   "fieldname": "manufacture",
+   "fieldtype": "Data",
+   "label": "Manufacture"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-21 16:02:37.534338",
+ "modified": "2025-10-28 12:35:27.591046",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment Repair",
