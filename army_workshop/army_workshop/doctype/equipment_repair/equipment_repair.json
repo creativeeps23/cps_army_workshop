@@ -86,33 +86,33 @@
    "fieldname": "repair_category",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Repair Category",
-   "options": "\nWorkshop Repair\nOutside Repair",
+   "label": "\u0641\u0626\u0629 \u0627\u0644\u0625\u0635\u0644\u0627\u062d",
+   "options": "\n\u0625\u0635\u0644\u0627\u062d \u062f\u0627\u062e\u0644 \u0627\u0644\u0648\u0631\u0634\u0629\n\u0645\u0623\u0645\u0648\u0631\u064a\u0629 \u0625\u0635\u0644\u0627\u062d \u062e\u0627\u0631\u062c\u064a\u0629",
    "reqd": 1
   },
   {
    "fieldname": "equipment_data_section",
    "fieldtype": "Section Break",
-   "label": "Equipment Data"
+   "label": "\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0645\u0639\u062f\u0629"
   },
   {
    "fieldname": "equipment_name",
    "fieldtype": "Link",
-   "label": "Equipment Name",
+   "label": "\u0627\u0633\u0645 \u0627\u0644\u0645\u0639\u062f\u0629",
    "options": "Equipment"
   },
   {
    "fetch_from": "equipment_name.army_number",
    "fieldname": "army_number",
    "fieldtype": "Data",
-   "label": "Army Number",
+   "label": "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0639\u0633\u0643\u0631\u064a \u0644\u0644\u0645\u0639\u062f\u0629",
    "read_only": 1
   },
   {
    "fetch_from": "equipment_name.unit_name",
    "fieldname": "unit_name",
    "fieldtype": "Data",
-   "label": "Unit Name",
+   "label": "\u0627\u0633\u0645 \u0627\u0644\u0648\u062d\u062f\u0629",
    "read_only": 1
   },
   {
@@ -123,32 +123,32 @@
    "fetch_from": "equipment_name.equipment_model",
    "fieldname": "equipment_model",
    "fieldtype": "Data",
-   "label": "Equipment Model",
+   "label": "\u0637\u0631\u0627\u0632 \u0627\u0644\u0645\u0639\u062f\u0629",
    "read_only": 1
   },
   {
    "fetch_from": "equipment_name.chassis_number",
    "fieldname": "chassis_number",
    "fieldtype": "Data",
-   "label": "Chassis Number",
+   "label": "\u0631\u0642\u0645 \u0627\u0644\u0634\u0627\u0633\u064a\u0629",
    "read_only": 1
   },
   {
    "fieldname": "delegated_data_section",
    "fieldtype": "Section Break",
-   "label": "Delegated Data"
+   "label": "\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0645\u0646\u062f\u0648\u0628"
   },
   {
    "fieldname": "delegated_name",
    "fieldtype": "Link",
-   "label": "Delegated Name",
+   "label": "\u0627\u0633\u0645 \u0627\u0644\u0645\u0646\u062f\u0648\u0628",
    "options": "Delegate"
   },
   {
    "fetch_from": "delegated_name.delegated_army_number",
    "fieldname": "delegated_army_number",
    "fieldtype": "Data",
-   "label": "Delegated Army Number",
+   "label": "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0639\u0633\u0643\u0631\u064a \u0644\u0644\u0645\u0646\u062f\u0648\u0628",
    "read_only": 1
   },
   {
@@ -159,14 +159,14 @@
    "fetch_from": "delegated_name.degree__grade",
    "fieldname": "degree__grade",
    "fieldtype": "Data",
-   "label": "Degree / Grade",
+   "label": "\u0627\u0644\u0631\u062a\u0628\u0629 / \u0627\u0644\u062f\u0631\u062c\u0629",
    "read_only": 1
   },
   {
    "fetch_from": "delegated_name.mobile_phone",
    "fieldname": "mobile_phone",
    "fieldtype": "Data",
-   "label": "Mobile Phone",
+   "label": "\u0645\u0648\u0628\u0627\u064a\u0644 \u0627\u0644\u0645\u0646\u062f\u0648\u0628",
    "read_only": 1
   },
   {
@@ -176,49 +176,49 @@
   {
    "fieldname": "administration_approval_category",
    "fieldtype": "Select",
-   "label": "Administration Approval Category",
-   "options": "\nWith Administration Approval\nWithout Administration Approval"
+   "label": "\u0646\u0648\u0639 \u062a\u0635\u062f\u064a\u0642 \u0627\u0644\u0625\u062f\u0627\u0631\u0629",
+   "options": "\n\u0628\u062a\u0635\u062f\u064a\u0642 \u0627\u0644\u0625\u062f\u0627\u0631\u0629\n\u0628\u062f\u0648\u0646 \u062a\u0635\u062f\u064a\u0642 \u0627\u0644\u0625\u062f\u0627\u0631\u0629"
   },
   {
    "fieldname": "with_administration_approval_section",
    "fieldtype": "Section Break",
-   "label": "With Administration Approval"
+   "label": " \u0628\u062a\u0635\u062f\u064a\u0642 \u0627\u0644\u0625\u062f\u0627\u0631\u0629"
   },
   {
    "default": "0",
    "fieldname": "mission_letter",
    "fieldtype": "Check",
-   "label": "Mission Letter"
+   "label": "\u062c\u0648\u0627\u0628 \u0645\u0623\u0645\u0648\u0631\u064a\u0629"
   },
   {
    "default": "0",
    "fieldname": "administration_approval",
    "fieldtype": "Check",
-   "label": "Administration Approval"
+   "label": "\u0645\u0648\u0627\u0641\u0642\u0629 \u0627\u0644\u0625\u062f\u0627\u0631\u0629"
   },
   {
    "default": "0",
    "fieldname": "equipment_log__certificate",
    "fieldtype": "Check",
-   "label": "Equipment Log / Certificate"
+   "label": "\u0633\u062c\u0644 / \u0634\u0647\u0627\u062f\u0629 \u0627\u0644\u0645\u0639\u0627\u062f\u0629"
   },
   {
    "default": "0",
    "fieldname": "form_3at",
    "fieldtype": "Check",
-   "label": "Form 3AT"
+   "label": "\u0646\u0645\u0648\u0630\u062c 3 \u0623 \u062a"
   },
   {
    "default": "0",
    "fieldname": "form4at",
    "fieldtype": "Check",
-   "label": "Form 4AT"
+   "label": "\u0646\u0645\u0648\u0630\u062c 4 \u0623 \u062a"
   },
   {
    "default": "0",
    "fieldname": "deduction_acceptance_form",
    "fieldtype": "Check",
-   "label": "Deduction Acceptance Form"
+   "label": "\u0625\u0642\u0631\u0627\u0631 \u0628\u0642\u0628\u0648\u0644 \u0627\u0644\u062e\u0635\u0645"
   },
   {
    "fieldname": "section_break_rhh26",
@@ -228,42 +228,42 @@
    "default": "0",
    "fieldname": "id_card_copy",
    "fieldtype": "Check",
-   "label": "ID Card Copy"
+   "label": "\u0635\u0648\u0631\u0629 \u0627\u0644\u0643\u0627\u0631\u0646\u064a\u0647"
   },
   {
    "default": "0",
    "fieldname": "certificate_of_repair_completion",
    "fieldtype": "Check",
-   "label": "Certificate of Repair Completion"
+   "label": "\u0634\u0647\u0627\u062f\u0629 \u0625\u062a\u0645\u0627\u0645 \u0627\u0644\u0625\u0635\u0644\u0627\u062d"
   },
   {
    "default": "0",
    "fieldname": "work_order_number",
    "fieldtype": "Data",
-   "label": "Work Order Number"
+   "label": "\u0631\u0642\u0645 \u0623\u0645\u0631 \u0627\u0644\u0634\u063a\u0644"
   },
   {
    "default": "0",
    "fieldname": "work_order_date",
    "fieldtype": "Data",
-   "label": "Work Order Date"
+   "label": "\u062a\u0627\u0631\u064a\u062e \u0623\u0645\u0631 \u0627\u0644\u0634\u063a\u0644"
   },
   {
    "fieldname": "without_administration_approval_section",
    "fieldtype": "Section Break",
-   "label": "Without Administration Approval"
+   "label": "\u0628\u062f\u0648\u0646 \u0645\u0648\u0627\u0641\u0642\u0629 \u0627\u0644\u0625\u062f\u0627\u0631\u0629"
   },
   {
    "default": "0",
    "fieldname": "work_order_number1",
    "fieldtype": "Check",
-   "label": "Work Order Number"
+   "label": "\u0631\u0642\u0645 \u0623\u0645\u0631 \u0627\u0644\u0634\u063a\u0644"
   },
   {
    "default": "0",
    "fieldname": "certificate_of_repair_completion1",
    "fieldtype": "Check",
-   "label": "Certificate of Repair Completion"
+   "label": "\u0634\u0647\u0627\u062f\u0629 \u0625\u062a\u0645\u0627\u0645 \u0627\u0644\u0625\u0635\u0644\u0627\u062d"
   },
   {
    "fieldname": "column_break_jlvq3",
@@ -273,12 +273,12 @@
    "default": "0",
    "fieldname": "work_order_date1",
    "fieldtype": "Check",
-   "label": "Work Order Date"
+   "label": "\u062a\u0627\u0631\u064a\u062e \u0623\u0645\u0631 \u0627\u0644\u0634\u063a\u0644"
   },
   {
    "fieldname": "entry_date",
    "fieldtype": "Date",
-   "label": "Entry Date"
+   "label": "\u062a\u0627\u0631\u064a\u062e \u0627\u0644\u062f\u062e\u0648\u0644"
   },
   {
    "fieldname": "column_break_z9lev",
@@ -300,14 +300,14 @@
    "fieldname": "repair_type",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Repair Type",
+   "label": "\u0646\u0648\u0639 \u0627\u0644\u0625\u0635\u0644\u0627\u062d",
    "options": "\n\u0645\u0639\u062f\u0629\n\u0645\u062c\u0645\u0648\u0639\u0629",
    "reqd": 1
   },
   {
    "fieldname": "group_type",
    "fieldtype": "Data",
-   "label": "Group Type"
+   "label": "\u0646\u0648\u0639 \u0627\u0644\u0645\u062c\u0645\u0648\u0639\u0629"
   },
   {
    "fieldname": "group_section",
@@ -318,7 +318,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Status",
+   "label": "\u0627\u0644\u062d\u0627\u0644\u0629",
    "options": "\n\u0642\u064a\u062f \u0627\u0644\u0641\u062d\u0635\n\u062c\u0627\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d\n\u062c\u0627\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d -\u0637\u0631\u0641 \u062e\u0627\u0631\u062c\u064a\n\u062c\u0627\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d - \u0645\u0623\u0645\u0648\u0631\u064a\u0629\n\u062a\u0645 \u0627\u0644\u0625\u0635\u0644\u0627\u062d\n\u062a\u0645 \u0627\u0644\u062a\u0633\u0644\u064a\u0645"
   },
   {
@@ -369,21 +369,21 @@
    "fetch_from": "equipment_name.subunit",
    "fieldname": "subunit",
    "fieldtype": "Data",
-   "label": "Subunit",
+   "label": "\u0627\u0644\u0648\u062d\u062f\u0629 \u0627\u0644\u0641\u0631\u0639\u064a\u0629",
    "read_only": 1
   },
   {
    "fetch_from": "equipment_name.subunit",
    "fieldname": "department",
    "fieldtype": "Data",
-   "label": "Department",
+   "label": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629",
    "read_only": 1
   },
   {
    "fetch_from": "equipment_name.location",
    "fieldname": "location",
    "fieldtype": "Data",
-   "label": "Location",
+   "label": "\u0645\u0643\u0627\u0646 \u0627\u0644\u062a\u0648\u0627\u062c\u062f",
    "read_only": 1
   },
   {
@@ -395,7 +395,7 @@
    "fetch_from": "equipment_name.manufacturer",
    "fieldname": "manufacture",
    "fieldtype": "Data",
-   "label": "Manufacture",
+   "label": "\u0627\u0644\u0646\u0648\u0639",
    "read_only": 1
   },
   {
@@ -457,7 +457,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-29 19:52:44.451099",
+ "modified": "2025-10-29 21:17:35.917257",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment Repair",

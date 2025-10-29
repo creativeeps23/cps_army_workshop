@@ -17,13 +17,13 @@
    "fieldname": "manufacture",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Manufacture",
+   "label": "\u0627\u0644\u0646\u0648\u0639",
    "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-29 15:24:31.611823",
+ "modified": "2025-10-29 21:18:32.215801",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Manufacture",

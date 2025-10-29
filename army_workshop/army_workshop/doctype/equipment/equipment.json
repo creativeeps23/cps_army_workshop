@@ -36,7 +36,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Equipment Name"
+   "label": "\u0627\u0633\u0645 \u0627\u0644\u0645\u0639\u062f\u0629"
   },
   {
    "allow_in_quick_entry": 1,
@@ -44,21 +44,21 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Equipment Model"
+   "label": "\u0637\u0631\u0627\u0632 \u0627\u0644\u0645\u0639\u062f\u0629"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "army_number",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Army Number"
+   "label": "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0639\u0633\u0643\u0631\u064a \u0644\u0644\u0645\u0639\u062f\u0629"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "chassis_number",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Chassis Number"
+   "label": "\u0631\u0642\u0645 \u0627\u0644\u0634\u0627\u0633\u064a\u0647"
   },
   {
    "allow_in_quick_entry": 1,
@@ -66,7 +66,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Unit Name"
+   "label": "\u0627\u0633\u0645 \u0627\u0644\u0648\u062d\u062f\u0629"
   },
   {
    "allow_in_quick_entry": 1,
@@ -74,14 +74,14 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Department",
+   "label": "\u0627\u0644\u0625\u062f\u0627\u0631\u0629",
    "options": "Army Department"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "location",
    "fieldtype": "Link",
-   "label": "Location",
+   "label": "\u0645\u0643\u0627\u0646 \u0627\u0644\u062a\u0648\u0627\u062c\u062f",
    "options": "Army Location"
   },
   {
@@ -94,37 +94,37 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Manufacturer",
+   "label": "\u0627\u0644\u0646\u0648\u0639",
    "options": "Manufacture"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "serial_number",
    "fieldtype": "Data",
-   "label": "Serial Number"
+   "label": "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0645\u0633\u0644\u0633\u0644"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "issuance_date",
    "fieldtype": "Data",
-   "label": "Issuance Date"
+   "label": "\u062a\u0627\u0631\u064a\u062e \u0627\u0644\u0635\u0631\u0641"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "page_number",
    "fieldtype": "Data",
-   "label": "Page Number"
+   "label": "\u0631\u0642\u0645 \u0627\u0644\u0635\u0641\u062d\u0629"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "subunit",
    "fieldtype": "Data",
-   "label": "Subunit"
+   "label": "\u0627\u0644\u0648\u062d\u062f\u0629 \u0627\u0644\u0641\u0631\u0639\u064a\u0629"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-29 15:26:16.203195",
+ "modified": "2025-10-29 21:18:26.665923",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment",
