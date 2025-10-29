@@ -73,7 +73,7 @@ def get_columns(filters):
 
 
 def get_data(filters):
-    conditions = ["er.status = 'جار الإصلاح'"]  # الحالة ثابتة = قيد الفحص
+    conditions = ["er.status = 'تم التسليم'"]  # الحالة ثابتة = تم التسليم
     query_params = {}
 
     # Add conditions based on filters
@@ -205,6 +205,7 @@ def get_data(filters):
 
     data = frappe.db.sql(query, query_params, as_dict=True)
     return data
+
 
 def add_actions_data(data):
     """

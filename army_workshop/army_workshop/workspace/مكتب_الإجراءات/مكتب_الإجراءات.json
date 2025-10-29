@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"WoPBzFJHQ6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">\u0645\u0643\u062a\u0628 \u0627\u0644\u0625\u062c\u0631\u0627\u0621\u0627\u062a</span>\",\"col\":12}},{\"id\":\"tPjZdR3aTJ\",\"type\":\"card\",\"data\":{\"card_name\":\"Repair\",\"col\":4}},{\"id\":\"UmXBECDoUY\",\"type\":\"card\",\"data\":{\"card_name\":\"Master Data\",\"col\":4}}]",
+ "content": "[{\"id\":\"WoPBzFJHQ6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">\u0645\u0643\u062a\u0628 \u0627\u0644\u0625\u062c\u0631\u0627\u0621\u0627\u062a</span>\",\"col\":12}},{\"id\":\"tPjZdR3aTJ\",\"type\":\"card\",\"data\":{\"card_name\":\"Repair\",\"col\":4}},{\"id\":\"UmXBECDoUY\",\"type\":\"card\",\"data\":{\"card_name\":\"Master Data\",\"col\":4}},{\"id\":\"WVU2sqUB_e\",\"type\":\"card\",\"data\":{\"card_name\":\"\u062a\u0642\u0627\u0631\u064a\u0631\",\"col\":4}}]",
  "creation": "2025-10-21 02:49:25.288114",
  "custom_blocks": [],
  "docstatus": 0,
@@ -118,9 +118,68 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "\u062a\u0642\u0627\u0631\u064a\u0631",
+   "link_count": 5,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "\u0627\u0644\u0645\u0639\u062f\u0627\u062a \u0648\u0627\u0644\u0645\u062c\u0645\u0648\u0639\u0627\u062a \u0642\u064a\u062f \u0627\u0644\u0641\u062d\u0635",
+   "link_count": 0,
+   "link_to": "Ongoing Repair Equipment Detailed",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "\u0627\u0644\u0645\u0639\u062f\u0627\u062a \u0648\u0627\u0644\u0645\u062c\u0645\u0648\u0639\u0627\u062a \u0627\u0644\u062a\u064a \u062a\u0645 \u0625\u0635\u0644\u0627\u062d\u0647\u0627",
+   "link_count": 0,
+   "link_to": "Repaired Equipment Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "\u0627\u0644\u0645\u0639\u062f\u0627\u062a \u0648\u0627\u0644\u0645\u062c\u0645\u0648\u0639\u0627\u062a \u0627\u0644\u062c\u0627\u0647\u0632\u0629 \u0644\u0644\u062a\u0633\u0644\u064a\u0645",
+   "link_count": 0,
+   "link_to": "Ready for Delivery Equipment",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "\u0627\u0644\u0645\u0639\u062f\u0627\u062a \u0648\u0627\u0644\u0645\u062c\u0645\u0648\u0639\u0627\u062a \u0642\u064a\u062f \u0627\u0644\u0641\u062d\u0635",
+   "link_count": 0,
+   "link_to": "Ongoing Repair Equipment Detailed",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "\u0627\u0644\u0645\u0639\u062f\u0627\u062a \u0648\u0627\u0644\u0645\u062c\u0645\u0648\u0639\u0627\u062a \u0627\u0644\u062a\u064a \u062a\u0645 \u062a\u0633\u0644\u064a\u0645\u0647\u0627",
+   "link_count": 0,
+   "link_to": "Equipment and Groups Delivered",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2025-10-28 12:45:51.630610",
+ "modified": "2025-10-29 20:16:39.031961",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0625\u062c\u0631\u0627\u0621\u0627\u062a",

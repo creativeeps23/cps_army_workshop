@@ -1,8 +1,5 @@
-// Copyright (c) 2025, Creative Programming Solutions and contributors
-// For license information, please see license.txt
-/* eslint-disable */
+frappe.query_reports["Equipment and Groups Delivered"] = {
 
-frappe.query_reports["Ongoing Repair Equipment Detailed"] = {
 
     "filters": [
         {
@@ -50,9 +47,31 @@ frappe.query_reports["Ongoing Repair Equipment Detailed"] = {
             "label": "إلى تاريخ الدخول",
             "fieldtype": "Date"
         },
-               {
+        {
+            "fieldname": "leave_from_date",
+            "label": "من تاريخ الخروج",
+            "fieldtype": "Date"
+        },
+        {
+            "fieldname": "leave_to_date",
+            "label": "إلى تاريخ الخروج",
+            "fieldtype": "Date"
+        },
+        {
             "fieldname": "show_delegate",
             "label": "عرض بيانات المندوب",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "show_technical_team",
+            "label": "عرض بيانات الفريق الفني",
+            "fieldtype": "Check",
+            "default": 1
+        },
+        {
+            "fieldname": "show_actions",
+            "label": "عرض الأعمال المنفذة",
             "fieldtype": "Check",
             "default": 0
         }

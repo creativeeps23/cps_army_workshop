@@ -16,13 +16,14 @@
    "allow_in_quick_entry": 1,
    "fieldname": "manufacture",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Manufacture",
    "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-26 02:39:23.749841",
+ "modified": "2025-10-29 15:24:31.611823",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Manufacture",

@@ -16,13 +16,14 @@
    "allow_in_quick_entry": 1,
    "fieldname": "department",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Department",
    "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-26 02:35:57.577968",
+ "modified": "2025-10-29 15:24:25.235078",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Army Department",

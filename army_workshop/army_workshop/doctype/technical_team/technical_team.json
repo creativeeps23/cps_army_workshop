@@ -29,6 +29,7 @@
    "fieldname": "degree",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Degree",
    "reqd": 1
   },
@@ -37,6 +38,7 @@
    "fieldname": "name1",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Name",
    "reqd": 1
   },
@@ -48,18 +50,22 @@
    "allow_in_quick_entry": 1,
    "fieldname": "army_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Army Number"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "job",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Job"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-21 15:03:55.402112",
+ "modified": "2025-10-29 15:24:05.395097",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Technical Team",

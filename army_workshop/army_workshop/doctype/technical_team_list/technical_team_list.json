@@ -11,7 +11,8 @@
   "notes",
   "column_break_p5kaf",
   "job",
-  "army_number"
+  "army_number",
+  "mobile_phone"
  ],
  "fields": [
   {
@@ -56,12 +57,17 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Notes"
+  },
+  {
+   "fieldname": "mobile_phone",
+   "fieldtype": "Data",
+   "label": "Mobile Phone"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-10-21 15:29:12.061894",
+ "modified": "2025-10-28 20:34:40.587647",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Technical Team List",

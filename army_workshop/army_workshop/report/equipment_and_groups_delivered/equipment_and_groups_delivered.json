@@ -1,7 +1,7 @@
 {
- "add_total_row": 0,
+ "add_total_row": 1,
  "columns": [],
- "creation": "2025-10-28 01:29:28.150609",
+ "creation": "2025-10-29 01:14:19.445243",
  "disable_prepared_report": 0,
  "disabled": 0,
  "docstatus": 0,
@@ -9,14 +9,14 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2025-10-28 12:13:48.917212",
+ "modified": "2025-10-29 01:14:19.445243",
  "modified_by": "Administrator",
  "module": "Army Workshop",
- "name": "Ready for Delivery Equipment",
+ "name": "Equipment and Groups Delivered",
  "owner": "Administrator",
  "prepared_report": 0,
  "ref_doctype": "Equipment Repair",
- "report_name": "Ready for Delivery Equipment",
+ "report_name": "Equipment and Groups Delivered",
  "report_type": "Script Report",
  "roles": [
   {

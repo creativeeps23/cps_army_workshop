@@ -21,7 +21,6 @@
   "serial_number",
   "location",
   "subunit",
-  "model",
   "page_number"
  ],
  "fields": [
@@ -36,6 +35,7 @@
    "fieldname": "equipment_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Equipment Name"
   },
   {
@@ -43,30 +43,37 @@
    "fieldname": "equipment_model",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Equipment Model"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "army_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Army Number"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "chassis_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Chassis Number"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "unit_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Unit Name"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "department",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Department",
    "options": "Army Department"
   },
@@ -85,14 +92,10 @@
    "allow_in_quick_entry": 1,
    "fieldname": "manufacturer",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Manufacturer",
    "options": "Manufacture"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "model",
-   "fieldtype": "Data",
-   "label": "Model"
   },
   {
    "allow_in_quick_entry": 1,
@@ -113,6 +116,7 @@
    "label": "Page Number"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "subunit",
    "fieldtype": "Data",
    "label": "Subunit"
@@ -120,7 +124,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-26 02:59:23.203927",
+ "modified": "2025-10-29 15:26:16.203195",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment",
@@ -152,6 +156,7 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",

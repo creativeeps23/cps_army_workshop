@@ -16,14 +16,20 @@
  ],
  "fields": [
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "delegated_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Delegated Name",
    "unique": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "degree__grade",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Degree / Grade",
    "options": "\n\u062c\u0646\u062f\u064a\n\u0639\u0631\u064a\u0641\n\u0631\u0642\u064a\u0628\n\u0631\u0642\u064a\u0628 \u0623\u0648\u0644\n\u0645\u0633\u0627\u0639\u062f\n\u0645\u0633\u0627\u0639\u062f \u0623\u0648\u0644\n\u0645\u0644\u0627\u0632\u0645\n\u0645\u0644\u0627\u0632\u0645 \u0623\u0648\u0644\n\u0646\u0642\u064a\u0628\n\u0631\u0627\u0626\u062f\n\u0645\u0642\u062f\u0645\n\u0639\u0642\u064a\u062f\n\u0639\u0645\u064a\u062f\n\u0644\u0648\u0627\u0621\n\u0641\u0631\u064a\u0642\n\u0641\u0631\u064a\u0642 \u0623\u0648\u0644"
   },
@@ -32,19 +38,25 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "delegated_army_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Delegated Army Number"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "mobile_phone",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Mobile Phone"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-21 12:02:56.113791",
+ "modified": "2025-10-29 15:23:44.289430",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Delegate",
@@ -76,6 +88,7 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
