@@ -1,8 +1,9 @@
 // Copyright (c) 2025, Creative Programming Solutions and contributors
 // For license information, please see license.txt
+/* eslint-disable */
 
-frappe.ui.form.on('Battries', {
-	// refresh: function(frm) {
+frappe.query_reports["Army Stock Balance"] = {
+	"filters": [
 
-	// }
-});
+	]
+};

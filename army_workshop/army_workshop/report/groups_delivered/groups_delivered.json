@@ -1,0 +1,37 @@
+{
+ "_liked_by": "[\"Administrator\"]",
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2025-11-01 19:22:03.508356",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "modified": "2025-11-02 01:39:34.643065",
+ "modified_by": "Administrator",
+ "module": "Army Workshop",
+ "name": "Groups Delivered",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Equipment Repair",
+ "report_name": "Groups Delivered",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0625\u062c\u0631\u0627\u0621\u0627\u062a"
+  },
+  {
+   "role": "\u0627\u0644\u0648\u0631\u0634\u0629"
+  },
+  {
+   "role": "\u0627\u0644\u0645\u062e\u0627\u0632\u0646"
+  }
+ ]
+}

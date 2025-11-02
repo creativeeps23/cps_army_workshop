@@ -73,7 +73,7 @@ def get_columns(filters):
 
 
 def get_data(filters):
-    conditions = ["er.status = 'جار الإصلاح'"]  # الحالة ثابتة = قيد الفحص
+    conditions = ["er.status = 'قيد الفحص'"]  # الحالة ثابتة = قيد الفحص
     query_params = {}
 
     # Add conditions based on filters

@@ -1,0 +1,125 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:item_code",
+ "creation": "2025-11-01 02:50:15.157677",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "item_name",
+  "item_group",
+  "column_break_ijjty",
+  "qty",
+  "xx_number",
+  "part_number",
+  "barcode_image"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "item_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "\u0643\u0648\u062f \u0627\u0644\u0645\u0646\u062a\u062c",
+   "unique": 1
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "\u0627\u0633\u0645 \u0627\u0644\u0645\u0646\u062a\u062c",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.item_group",
+   "fieldname": "item_group",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "\u0645\u062c\u0645\u0648\u0639\u0629 \u0627\u0644\u0645\u0646\u062a\u062c",
+   "options": "\n\u0642\u0637\u0639 \u0627\u0644\u063a\u064a\u0627\u0631\n\u0627\u0644\u0645\u062a\u062f\u0627\u0648\u0644",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ijjty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "\u0627\u0644\u0643\u0645\u064a\u0629",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "xx_number",
+   "fieldtype": "Data",
+   "label": "XX Number"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "part_number",
+   "fieldtype": "Data",
+   "label": "Part Number"
+  },
+  {
+   "fieldname": "barcode_image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "barcode_image"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-02 06:26:18.652487",
+ "modified_by": "Administrator",
+ "module": "Army Workshop",
+ "name": "Army Workshop Items",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0625\u062c\u0631\u0627\u0621\u0627\u062a",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "\u0627\u0644\u0645\u062e\u0627\u0632\u0646",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

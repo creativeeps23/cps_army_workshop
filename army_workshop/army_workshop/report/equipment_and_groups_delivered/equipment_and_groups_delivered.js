@@ -29,7 +29,8 @@ frappe.query_reports["Equipment and Groups Delivered"] = {
             "fieldname": "repair_type",
             "label": "نوع الإصلاح",
             "fieldtype": "Select",
-            "options": "\nمعدات\nمجموعة"
+            "options": "\nمعدات\nمجموعة",
+
         },
         {
             "fieldname": "administration_approval_category",

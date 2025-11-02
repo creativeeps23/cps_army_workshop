@@ -64,7 +64,14 @@
   "mechanic",
   "electric",
   "others",
+  "\u0646\u0645\u0648\u0630\u062c_\u062a\u0641\u062a\u064a\u0634_tab",
+  "\u0623\u0639\u0645\u0627\u0644_\u0627\u0644\u0645\u064a\u0643\u0627\u0646\u064a\u0643\u0627",
+  "\u0623\u0639\u0645\u0627\u0644_\u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621",
+  "\u0623\u0639\u0645\u0627\u0644_\u062a\u0643\u0645\u064a\u0644\u064a\u0629",
   "\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_tab",
+  "tires",
+  "batteries",
+  "filters",
   "\u0628\u064a\u0627\u0646_\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_\u0627\u0644\u0645\u0646\u0635\u0631\u0641\u0629",
   "external_repair_tab",
   "\u0645\u0646\u062f\u0648\u0628_\u0627\u0644\u0634\u0631\u0643\u0629",
@@ -98,6 +105,8 @@
   {
    "fieldname": "equipment_name",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0627\u0633\u0645 \u0627\u0644\u0645\u0639\u062f\u0629",
    "options": "Equipment"
   },
@@ -105,6 +114,8 @@
    "fetch_from": "equipment_name.army_number",
    "fieldname": "army_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0639\u0633\u0643\u0631\u064a \u0644\u0644\u0645\u0639\u062f\u0629",
    "read_only": 1
   },
@@ -130,6 +141,8 @@
    "fetch_from": "equipment_name.chassis_number",
    "fieldname": "chassis_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0631\u0642\u0645 \u0627\u0644\u0634\u0627\u0633\u064a\u0629",
    "read_only": 1
   },
@@ -148,6 +161,8 @@
    "fetch_from": "delegated_name.delegated_army_number",
    "fieldname": "delegated_army_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0639\u0633\u0643\u0631\u064a \u0644\u0644\u0645\u0646\u062f\u0648\u0628",
    "read_only": 1
   },
@@ -362,8 +377,9 @@
   {
    "fieldname": "\u0628\u064a\u0627\u0646_\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_\u0627\u0644\u0645\u0646\u0635\u0631\u0641\u0629",
    "fieldtype": "Table",
-   "label": "\u0628\u064a\u0627\u0646 \u0642\u0637\u0639 \u0627\u0644\u063a\u064a\u0627\u0631 \u0627\u0644\u0645\u0646\u0635\u0631\u0641\u0629",
-   "options": "Workshop Items"
+   "label": "\u0642\u0637\u0639 \u0627\u0644\u063a\u064a\u0627\u0631 \u0648\u0627\u0644\u0645\u062a\u062f\u0627\u0648\u0644",
+   "options": "Workshop Items",
+   "read_only": 1
   },
   {
    "fetch_from": "equipment_name.subunit",
@@ -446,18 +462,63 @@
    "default": "0",
    "fieldname": "ex_repair",
    "fieldtype": "Check",
-   "label": "\u0635\u064a\u0627\u0646\u0629 \u062e\u0627\u0631\u062c\u064a\u0629"
+   "label": "\u0635\u064a\u0627\u0646\u0629 \u062e\u0627\u0631\u062c\u064a\u0629",
+   "permlevel": 1
   },
   {
    "fieldname": "barcode_image",
    "fieldtype": "Attach Image",
    "hidden": 1,
    "label": "barcode_image"
+  },
+  {
+   "fieldname": "tires",
+   "fieldtype": "Table",
+   "label": "\u0627\u0644\u0643\u0627\u0648\u062a\u0634",
+   "options": "Tires",
+   "read_only": 1
+  },
+  {
+   "fieldname": "batteries",
+   "fieldtype": "Table",
+   "label": "\u0627\u0644\u0628\u0637\u0627\u0631\u064a\u0627\u062a",
+   "options": "Batteries",
+   "read_only": 1
+  },
+  {
+   "fieldname": "filters",
+   "fieldtype": "Table",
+   "label": "\u0627\u0644\u0641\u0644\u0627\u062a\u0631",
+   "options": "Filters",
+   "read_only": 1
+  },
+  {
+   "fieldname": "\u0646\u0645\u0648\u0630\u062c_\u062a\u0641\u062a\u064a\u0634_tab",
+   "fieldtype": "Tab Break",
+   "label": "\u0646\u0645\u0648\u0630\u062c \u062a\u0641\u062a\u064a\u0634"
+  },
+  {
+   "fieldname": "\u0623\u0639\u0645\u0627\u0644_\u0627\u0644\u0645\u064a\u0643\u0627\u0646\u064a\u0643\u0627",
+   "fieldtype": "Table",
+   "label": "\u0623\u0639\u0645\u0627\u0644 \u0627\u0644\u0645\u064a\u0643\u0627\u0646\u064a\u0643\u0627",
+   "options": "Semi Actions"
+  },
+  {
+   "fieldname": "\u0623\u0639\u0645\u0627\u0644_\u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621",
+   "fieldtype": "Table",
+   "label": "\u0623\u0639\u0645\u0627\u0644 \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621",
+   "options": "Semi Actions"
+  },
+  {
+   "fieldname": "\u0623\u0639\u0645\u0627\u0644_\u062a\u0643\u0645\u064a\u0644\u064a\u0629",
+   "fieldtype": "Table",
+   "label": "\u0623\u0639\u0645\u0627\u0644 \u062a\u0643\u0645\u064a\u0644\u064a\u0629",
+   "options": "Semi Actions"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-29 21:17:35.917257",
+ "modified": "2025-11-02 04:43:55.571600",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment Repair",
@@ -466,7 +527,6 @@
  "permissions": [
   {
    "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
@@ -478,13 +538,43 @@
   },
   {
    "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0625\u062c\u0631\u0627\u0621\u0627\u062a",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "\u0645\u0643\u062a\u0628 \u0627\u0644\u062c\u0648\u062f\u0629",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "\u0645\u0643\u062a\u0628 \u0627\u0644\u062c\u0648\u062f\u0629",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "\u0627\u0644\u0648\u0631\u0634\u0629",
    "share": 1,
    "write": 1
   }
