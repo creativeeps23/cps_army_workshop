@@ -13,27 +13,27 @@ def get_columns():
     return [
         {
             "fieldname": "item_code",
-            "label": _("كود المنتج"),
+            "label": _("باركود الصنف"),
             "fieldtype": "Link",
-            "options": "Army Workshop Items",
+            "options": "Army Stock Filters",
             "width": 120
         },
         {
             "fieldname": "item_name",
-            "label": _("اسم المنتج"),
+            "label": _("اسم الصنف"),
             "fieldtype": "Data",
-            "width": 150
+            "width": 200
         },
         {
             "fieldname": "item_group",
-            "label": _("مجموعة المنتج"),
+            "label": _("مجموعة الصنف"),
             "fieldtype": "Data",
             "width": 100
         },
         {
             "fieldname": "qty",
             "label": _("الكمية"),
-            "fieldtype": "Float",
+            "fieldtype": "Int",
             "width": 80,
             "precision": 0
         },
@@ -45,7 +45,7 @@ def get_columns():
         },
         {
             "fieldname": "part_number",
-            "label": _("Part Number"),
+            "label": _("رقم العينة"),
             "fieldtype": "Data",
             "width": 120
         },
@@ -104,7 +104,7 @@ def get_workshop_data(filters):
                 WHEN qty < 5 THEN 'منخفض'
                 ELSE 'متوفر'
             END as status
-        FROM `tabArmy Workshop Items`
+        FROM `tabArmy Stock Filters`
         WHERE {where_clause}
         ORDER BY item_group, item_name, qty DESC
     """

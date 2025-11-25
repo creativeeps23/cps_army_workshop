@@ -50,7 +50,7 @@ def get_columns():
         {
             "fieldname": "current_qty",
             "label": _("الكمية"),
-            "fieldtype": "Float",
+            "fieldtype": "Int",
             "width": 80,
             "precision": 0
         },
@@ -352,7 +352,7 @@ def get_detailed_summary(data):
         {
             "value": total_qty,
             "label": "إجمالي الكمية",
-            "datatype": "Float",
+            "datatype": "Int",
             "color": "orange"
         },
         {

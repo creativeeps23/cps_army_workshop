@@ -68,7 +68,7 @@ frappe.query_reports["Equipment and Groups Delivered"] = {
             "fieldname": "show_technical_team",
             "label": "عرض بيانات الفريق الفني",
             "fieldtype": "Check",
-            "default": 1
+            "default": 0
         },
         {
             "fieldname": "show_actions",

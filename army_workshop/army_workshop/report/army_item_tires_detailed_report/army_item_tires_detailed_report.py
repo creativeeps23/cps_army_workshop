@@ -13,22 +13,23 @@ def get_columns():
     return [
         {
             "fieldname": "item_code",
-            "label": _("كود المنتج"),
+            "label": _("كود الصنف"),
             "fieldtype": "Link",
             "options": "Army Item Tires",
             "width": 120
         },
         {
             "fieldname": "item_name",
-            "label": _("اسم المنتج"), 
-            "fieldtype": "Data",
-            "width": 150
+            "label": _("اسم الصنف"), 
+            "fieldtype": "Link",
+            "options": "Army Item Tires",
+            "width": 200
         },
         {
             "fieldname": "item_group",
-            "label": _("الماركة"),
+            "label": _("مجموعة الصنف"),
             "fieldtype": "Data",
-            "width": 100
+            "width": 150
         },
         {
             "fieldname": "النوع",
@@ -45,7 +46,7 @@ def get_columns():
         {
             "fieldname": "qty",
             "label": _("الكمية"),
-            "fieldtype": "Float",
+            "fieldtype": "Int",
             "width": 80,
             "precision": 0
         },
@@ -178,7 +179,7 @@ def get_tires_summary(data):
         {
             "value": total_qty,
             "label": "إجمالي الكمية", 
-            "datatype": "Float",
+            "datatype": "Int",
             "color": "green"
         },
         {

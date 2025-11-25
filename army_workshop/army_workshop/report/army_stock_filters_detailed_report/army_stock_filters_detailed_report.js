@@ -2,14 +2,15 @@ frappe.query_reports["Army Stock Filters Detailed Report"] = {
     "filters": [
         {
             "fieldname": "item_code",
-            "label": __("كود المنتج"),
+            "label": __("باركود"),
             "fieldtype": "Data",
             "width": 80
         },
         {
             "fieldname": "item_name",
-            "label": __("اسم المنتج"),
-            "fieldtype": "Data",
+            "label": __("اسم الصنف"),
+            "fieldtype": "Link",
+            "options": "Army Stock Filters",
             "width": 80
         },
         
@@ -21,7 +22,7 @@ frappe.query_reports["Army Stock Filters Detailed Report"] = {
         },
         {
             "fieldname": "part_number",
-            "label": __("Part Number"),
+            "label": __("رقم العينة"),
             "fieldtype": "Data",
             "width": 80
         },

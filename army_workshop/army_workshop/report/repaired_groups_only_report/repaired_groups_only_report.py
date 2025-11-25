@@ -12,7 +12,7 @@ def execute(filters=None):
     conditions.append("er.repair_type = 'مجموعة'")
 
     # default statuses for this report (repaired / delivered)
-    default_statuses = ("تم الإصلاح", "تم التسليم")
+    default_statuses = ("تم الإصلاح",)  # تم إصلاح الخطأ هنا - جعلناها tuple
 
     # If user selected a specific status, use it, otherwise use default statuses
     if filters.get("status"):
@@ -28,7 +28,7 @@ def execute(filters=None):
         conditions.append("er.unit_name = %(unit_name)s")
         query_filters["unit_name"] = filters.get("unit_name")
     if filters.get("subunit"):
-        conditions.append("er.subunit = %(subunit)s")
+        conditions.append("er.subunit = %(subsubunit)s")
         query_filters["subunit"] = filters.get("subunit")
     if filters.get("location"):
         conditions.append("er.location = %(location)s")
@@ -133,25 +133,26 @@ def execute(filters=None):
 
     # Build summary only (no chart)
 
-
     # Columns
     columns = [
-        {"label": "رقم الإصلاح", "fieldname": "repair_id", "fieldtype": "Link", "options": "Equipment Repair", "width": 130},
-        {"label": "اسم المعدة", "fieldname": "equipment_name", "fieldtype": "Data", "width": 160},
-        {"label": "طراز المعدة", "fieldname": "equipment_model", "fieldtype": "Data", "width": 120},
-        {"label": "الرقم العسكري", "fieldname": "army_number", "fieldtype": "Data", "width": 110},
-        {"label": "رقم الشاسيه", "fieldname": "chassis_number", "fieldtype": "Data", "width": 130},
-        {"label": "الشركة المصنعة", "fieldname": "manufacture", "fieldtype": "Data", "width": 140},
-        {"label": "الوحدة", "fieldname": "unit_name", "fieldtype": "Data", "width": 120},
-        {"label": "الوحدة الفرعية", "fieldname": "subunit", "fieldtype": "Data", "width": 120},
-        {"label": "مكان التواجد", "fieldname": "location", "fieldtype": "Data", "width": 120},
-        {"label": "نوع الإصلاح", "fieldname": "repair_type", "fieldtype": "Data", "width": 100},
-        {"label": "نوع التصديق", "fieldname": "administration_approval_category", "fieldtype": "Data", "width": 140},
-        {"label": "رقم أمر الشغل", "fieldname": "work_order_number", "fieldtype": "Data", "width": 130},
-        {"label": "تاريخ أمر الشغل", "fieldname": "work_order_date", "fieldtype": "Date", "width": 120},
-        {"label": "تاريخ الدخول", "fieldname": "entry_date", "fieldtype": "Date", "width": 110},
-        {"label": "تاريخ الخروج", "fieldname": "leave_date", "fieldtype": "Date", "width": 110},
-        {"label": "الحالة", "fieldname": "status", "fieldtype": "Data", "width": 130},
+        {"label": _(" الباركود"), "fieldname": "repair_id", "fieldtype": "Link", "options": "Equipment Repair", "width": 120},
+        {"label": _("الوحدة"), "fieldname": "unit_name", "fieldtype": "Data", "width": 200},
+        {"label": _("إسم المعدة"), "fieldname": "equipment_name", "fieldtype": "Data", "width": 200},
+        {"label": _("رقم الجيش"), "fieldname": "army_number", "fieldtype": "Data", "width": 130},
+        {"label": _("رقم الشاسية"), "fieldname": "chassis_number", "fieldtype": "Data", "width": 150},
+        {"label": _("نوع الإصلاح"), "fieldname": "repair_type", "fieldtype": "Data", "width": 100},
+        {"label": _("تاريخ الدخول"), "fieldname": "entry_date", "fieldtype": "Date", "width": 110},
+        {"label": _("تاريخ الخروج"), "fieldname": "leave_date", "fieldtype": "Date", "width": 110},
+        {"label": _("الحالة"), "fieldname": "status", "fieldtype": "Data", "width": 120},
+        {"label": _("طراز المعدة"), "fieldname": "equipment_model", "fieldtype": "Data", "width": 120},
+        {"label": _("الشركة المصنعة"), "fieldname": "manufacture", "fieldtype": "Data", "width": 140},
+        {"label": _("الرقم العسكري للمعدة"), "fieldname": "army_number", "fieldtype": "Data", "width": 100},
+        {"label": _("الوحدة الفرعية"), "fieldname": "subunit", "fieldtype": "Data", "width": 120},
+        {"label": _("الموقع"), "fieldname": "location", "fieldtype": "Data", "width": 120},
+        {"label": _("الإدارة"), "fieldname": "department", "fieldtype": "Data", "width": 120},
+        {"label": _("تصديق الإدارة"), "fieldname": "administration_approval_category", "fieldtype": "Data", "width": 150},
+        {"label": _("رقم اذن الشغل"), "fieldname": "work_order_number", "fieldtype": "Data", "width": 130},
+        {"label": _("تاريخ اذن الشغل"), "fieldname": "work_order_date", "fieldtype": "Date", "width": 120},
     ]
 
     if filters.get("show_delegate"):
@@ -174,9 +175,9 @@ def execute(filters=None):
             {"label": "أعمال أخرى", "fieldname": "other_actions", "fieldtype": "Data", "width": 200},
         ]
 
-    # return columns, data, (no message), None (no chart)
-    return columns, data, None, None
+    chart = get_chart(data)
 
+    return columns, data, None, chart
 
 def add_actions_data(data):
     """
@@ -227,3 +228,31 @@ def add_actions_data(data):
     return data
 
 
+def get_chart(data):
+    if not data:
+        return {}
+
+    # Count by manufacture
+    manufacture_count = {}
+    for d in data:
+        manu = d.get("manufacture") or "غير محدد"
+        manufacture_count[manu] = manufacture_count.get(manu, 0) + 1
+
+    labels = list(manufacture_count.keys())
+    values = list(manufacture_count.values())
+
+    chart = {
+        "data": {
+            "labels": labels,
+            "datasets": [
+                {
+                    "name": "عدد المعدات حسب الشركة المصنعة",
+                    "values": values
+                }
+            ]
+        },
+        "type": "bar",   # ممكن نحوله pie أو donut حسب رغبتك
+        "colors": ["#4caf50"]
+    }
+
+    return chart

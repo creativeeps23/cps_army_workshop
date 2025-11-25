@@ -1,3 +1,4 @@
+
 frappe.ui.form.on('Equipment Repair', {
     refresh: function(frm) {
         toggleSections(frm);
@@ -95,19 +96,30 @@ function toggleSections(frm) {
     }
 
     // ✅ إظهار external_repair_tab إذا كان ex_repair معلم
-    if (cint(frm.doc.ex_repair) === 1) {
-        try {
-            // إذا كان Tab Break
-            frm.get_field('external_repair_tab').tab.hide(false);
-        } catch(e) {
-            // إذا كان Section Break
-            frm.set_df_property('مندوب_الشركة', 'hidden', 0);
-            frm.set_df_property('الشركة', 'hidden', 0);
-            frm.set_df_property('تاريخ_التسليم_للشركة', 'hidden', 0);
-            frm.set_df_property('تاريخ_الإستلام_من_الشركة', 'hidden', 0);
-            frm.set_df_property('contact_phone', 'hidden', 0);
-        }
+if (cint(frm.doc.ex_repair) === 1) {
+    try {
+        // إذا كان Tab Break
+        frm.get_field('external_repair_tab').tab.hide(false);
+    } catch(e) {
+        // إذا كان Section Break
+        frm.set_df_property('مندوب_الشركة', 'hidden', 0);
+        frm.set_df_property('الشركة', 'hidden', 0);
+        frm.set_df_property('تاريخ_التسليم_للشركة', 'hidden', 0);
+        frm.set_df_property('تاريخ_الإستلام_من_الشركة', 'hidden', 0);
+        frm.set_df_property('رقم_التواصل', 'hidden', 0);
     }
+} else {
+    try {
+        frm.get_field('external_repair_tab').tab.hide(true);
+    } catch(e) {
+        frm.set_df_property('مندوب_الشركة', 'hidden', 1);
+        frm.set_df_property('الشركة', 'hidden', 1);
+        frm.set_df_property('تاريخ_التسليم_للشركة', 'hidden', 1);
+        frm.set_df_property('تاريخ_الإستلام_من_الشركة', 'hidden', 1);
+        frm.set_df_property('رقم_التواصل', 'hidden', 1);
+    }
+}
+
 }
 
 function updateFieldRequirements(frm) {
@@ -115,7 +127,7 @@ function updateFieldRequirements(frm) {
     const fields = [
         'leave_date',
         'تاريخ_إنتهاء_الأعمال',
-        'contact_number',
+
         'delivery_date_to_company',
         'company_representative',
         'receive_date_from_company'
@@ -139,7 +151,7 @@ function updateFieldRequirements(frm) {
 
     // حالة جار الإصلاح -طرف خارجي
     if (frm.doc.status === 'جار الإصلاح -طرف خارجي') {
-        frm.set_df_property('contact_number', 'reqd', 1);
+ 
         frm.set_df_property('delivery_date_to_company', 'reqd', 1);
         frm.set_df_property('company_representative', 'reqd', 1);
     }
@@ -286,9 +298,7 @@ function validateRequiredFields(frm) {
         if (!frm.doc.مندوب_الشركة) {
             frappe.throw(__('حقل مندوب الشركة إلزامي عندما تكون الحالة "جار الإصلاح -طرف خارجي". يرجى ملء هذا الحقل أولاً.'));
         }
-        if (!frm.doc.contact_phone) {
-            frappe.throw(__('حقل رقم التواصل إلزامي عندما تكون الحالة "جار الإصلاح -طرف خارجي". يرجى ملء هذا الحقل أولاً.'));
-        }
+       
         if (!frm.doc.تاريخ_التسليم_للشركة) {
             frappe.throw(__('حقل تاريخ التسليم للشركة إلزامي عندما تكون الحالة "جار الإصلاح -طرف خارجي". يرجى ملء هذا الحقل أولاً.'));
         }
@@ -301,3 +311,45 @@ function validateRequiredFields(frm) {
         }
     }
 }
+
+frappe.ui.form.on('Equipment Repair', {
+    after_save: function(frm) {
+        // التحقق من وجود بيانات في حقل qr_code_image
+        if (!frm.doc.qr_code_image) {
+            frappe.call({
+                method: "army_workshop.api.barcode_utils.create_and_attach_barcode",
+                args: {
+                    doctype: frm.doc.doctype,
+                    docname: frm.doc.name
+                },
+                callback: function(r) {
+                    if (r.message) {
+                        frappe.show_alert({message: "✅ QR Code generated successfully!", indicator: 'green'});
+                        frm.reload_doc();
+                    } else {
+                        frappe.msgprint("❌ QR Code not generated.");
+                    }
+                }
+            });
+        } else {
+        }
+    }
+});
+
+frappe.ui.form.on('Equipment Repair', {
+    equipment_name: function(frm) {
+        update_full_name(frm);
+    },
+    group_type: function(frm) {
+        update_full_name(frm);
+    }
+});
+
+function update_full_name(frm) {
+    // إذا فيه قيم للحقلين
+    let eq_name = frm.doc.equipment_name || "";
+    let group_type = frm.doc.group_type || "";
+
+    frm.set_value('full_name', eq_name + (eq_name && group_type ? ' / ' : '') + group_type);
+}
+

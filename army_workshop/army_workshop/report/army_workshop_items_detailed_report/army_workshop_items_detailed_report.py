@@ -13,27 +13,27 @@ def get_columns():
     return [
         {
             "fieldname": "item_code",
-            "label": _("كود المنتج"),
+            "label": _("كود الصنف"),
             "fieldtype": "Link",
-            "options": "Item",
+            "options": "Army Workshop Items",
             "width": 120
         },
         {
             "fieldname": "item_name",
-            "label": _("اسم المنتج"),
+            "label": _("اسم الصنف"),
+            "fieldtype": "Data",
+            "width": 200
+        },
+        {
+            "fieldname": "item_group",
+            "label": _("مجموعة الصنف"),
             "fieldtype": "Data",
             "width": 150
         },
         {
-            "fieldname": "item_group",
-            "label": _("مجموعة المنتج"),
-            "fieldtype": "Data",
-            "width": 100
-        },
-        {
             "fieldname": "qty",
             "label": _("الكمية"),
-            "fieldtype": "Float",
+            "fieldtype": "Int",
             "width": 80,
             "precision": 0
         },
@@ -45,7 +45,7 @@ def get_columns():
         },
         {
             "fieldname": "part_number",
-            "label": _("Part Number"),
+            "label": _("رقم العينة"),
             "fieldtype": "Data",
             "width": 120
         },

@@ -15,8 +15,10 @@
   "repair_type",
   "ex_repair",
   "group_section",
+  "full_name",
   "group_type",
   "equipment_data_section",
+  "equipment_barcode",
   "equipment_name",
   "army_number",
   "unit_name",
@@ -80,7 +82,28 @@
   "column_break_yyivg",
   "\u0631\u0642\u0645_\u0627\u0644\u062a\u0648\u0627\u0635\u0644",
   "\u062a\u0627\u0631\u064a\u062e_\u0627\u0644\u0625\u0633\u062a\u0644\u0627\u0645_\u0645\u0646_\u0627\u0644\u0634\u0631\u0643\u0629",
-  "barcode_image"
+  "barcode_image",
+  "qr_code_image",
+  "\u0627\u0644\u0645\u0631\u0641\u0642\u0627\u062a_tab",
+  "\u0645\u062d\u0636\u0631_\u0627\u0644\u062a\u062c\u0631\u0628\u0629_\u0648\u0627\u0644\u062a\u0633\u0644\u064a\u0645",
+  "\u0642\u0628\u0644_section",
+  "01",
+  "03",
+  "column_break_vrap",
+  "02",
+  "04",
+  "\u0623\u062b\u0646\u0627\u0621_section",
+  "11",
+  "13",
+  "column_break_xtom",
+  "12",
+  "14",
+  "\u0628\u0639\u062f_section",
+  "21",
+  "23",
+  "column_break_zclk",
+  "22",
+  "24"
  ],
  "fields": [
   {
@@ -104,11 +127,11 @@
   },
   {
    "fieldname": "equipment_name",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "\u0627\u0633\u0645 \u0627\u0644\u0645\u0639\u062f\u0629",
-   "options": "Equipment"
+   "read_only": 1
   },
   {
    "fetch_from": "equipment_name.army_number",
@@ -116,7 +139,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0639\u0633\u0643\u0631\u064a \u0644\u0644\u0645\u0639\u062f\u0629",
+   "label": "\u0631\u0642\u0645 \u0627\u0644\u062c\u064a\u0634 \u0644\u0644\u0645\u0639\u062f\u0629",
    "read_only": 1
   },
   {
@@ -252,10 +275,9 @@
    "label": "\u0634\u0647\u0627\u062f\u0629 \u0625\u062a\u0645\u0627\u0645 \u0627\u0644\u0625\u0635\u0644\u0627\u062d"
   },
   {
-   "default": "0",
    "fieldname": "work_order_number",
    "fieldtype": "Data",
-   "label": "\u0631\u0642\u0645 \u0623\u0645\u0631 \u0627\u0644\u0634\u063a\u0644"
+   "label": "\u0631\u0642\u0645 \u0627\u0630\u0646 \u0627\u0644\u0634\u063a\u0644"
   },
   {
    "default": "0",
@@ -272,7 +294,7 @@
    "default": "0",
    "fieldname": "work_order_number1",
    "fieldtype": "Check",
-   "label": "\u0631\u0642\u0645 \u0623\u0645\u0631 \u0627\u0644\u0634\u063a\u0644"
+   "label": "\u0631\u0642\u0645 \u0627\u0630\u0646 \u0627\u0644\u0634\u063a\u0644"
   },
   {
    "default": "0",
@@ -514,11 +536,130 @@
    "fieldtype": "Table",
    "label": "\u0623\u0639\u0645\u0627\u0644 \u062a\u0643\u0645\u064a\u0644\u064a\u0629",
    "options": "Semi Actions"
+  },
+  {
+   "fieldname": "qr_code_image",
+   "fieldtype": "Attach",
+   "hidden": 1,
+   "label": "QR Code Image",
+   "read_only": 1
+  },
+  {
+   "fieldname": "equipment_barcode",
+   "fieldtype": "Link",
+   "label": "\u0628\u0627\u0631\u0643\u0648\u062f \u0627\u0644\u0645\u0639\u062f\u0629",
+   "options": "Equipment"
+  },
+  {
+   "fieldname": "\u0627\u0644\u0645\u0631\u0641\u0642\u0627\u062a_tab",
+   "fieldtype": "Tab Break",
+   "label": "\u0627\u0644\u0645\u0631\u0641\u0642\u0627\u062a"
+  },
+  {
+   "fieldname": "\u0645\u062d\u0636\u0631_\u0627\u0644\u062a\u062c\u0631\u0628\u0629_\u0648\u0627\u0644\u062a\u0633\u0644\u064a\u0645",
+   "fieldtype": "Attach Image",
+   "label": "\u0645\u062d\u0636\u0631 \u0627\u0644\u062a\u062c\u0631\u0628\u0629 \u0648\u0627\u0644\u062a\u0633\u0644\u064a\u0645"
+  },
+  {
+   "fieldname": "\u0642\u0628\u0644_section",
+   "fieldtype": "Section Break",
+   "label": "\u0642\u0628\u0644"
+  },
+  {
+   "fieldname": "column_break_vrap",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "\u0623\u062b\u0646\u0627\u0621_section",
+   "fieldtype": "Section Break",
+   "label": "\u0623\u062b\u0646\u0627\u0621"
+  },
+  {
+   "fieldname": "column_break_xtom",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "\u0628\u0639\u062f_section",
+   "fieldtype": "Section Break",
+   "label": "\u0628\u0639\u062f"
+  },
+  {
+   "fieldname": "column_break_zclk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "12",
+   "fieldtype": "Attach Image",
+   "label": "7"
+  },
+  {
+   "columns": 2,
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "\u0645\u0639\u062f\u0629/\u0645\u062c\u0645\u0648\u0639\u0629",
+   "read_only": 1
+  },
+  {
+   "fieldname": "13",
+   "fieldtype": "Attach Image",
+   "label": "6"
+  },
+  {
+   "fieldname": "14",
+   "fieldtype": "Attach Image",
+   "label": "8"
+  },
+  {
+   "fieldname": "21",
+   "fieldtype": "Attach Image",
+   "label": "9"
+  },
+  {
+   "fieldname": "23",
+   "fieldtype": "Attach Image",
+   "label": "10"
+  },
+  {
+   "fieldname": "22",
+   "fieldtype": "Attach Image",
+   "label": "11"
+  },
+  {
+   "fieldname": "24",
+   "fieldtype": "Attach Image",
+   "label": "12"
+  },
+  {
+   "fieldname": "01",
+   "fieldtype": "Attach Image",
+   "label": "1"
+  },
+  {
+   "fieldname": "03",
+   "fieldtype": "Attach Image",
+   "label": "2"
+  },
+  {
+   "fieldname": "02",
+   "fieldtype": "Attach Image",
+   "label": "3"
+  },
+  {
+   "fieldname": "04",
+   "fieldtype": "Attach Image",
+   "label": "4"
+  },
+  {
+   "fieldname": "11",
+   "fieldtype": "Attach Image",
+   "label": "5"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-02 04:43:55.571600",
+ "modified": "2025-11-25 22:39:09.693944",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment Repair",
@@ -579,7 +720,9 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

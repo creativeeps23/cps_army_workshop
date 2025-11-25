@@ -4,8 +4,8 @@ from frappe import _
 def execute(filters=None):
     filters = filters or {}
 
-    # Build conditions dynamically
-    conditions = ["er.status IN ('جار الإصلاح', 'جار الإصلاح - طرف خارجي', 'جار الإصلاح - مأمورية')"]
+    # Build conditions dynamically - تم إصلاح الخطأ هنا
+    conditions = ["er.status = 'جار الإصلاح'"]  # استخدام الحالة المطلوبة فقط
     query_filters = {}
 
     if filters.get("unit_name"):
@@ -113,8 +113,8 @@ def execute(filters=None):
     if filters.get("show_actions"):
         data = add_actions_data(data)
 
-    # Build chart
-    chart = get_chart_data()
+    # Build chart مع إضافة الفلتر
+    chart = get_chart_data(filters)
 
     # Define columns
     columns = [
@@ -129,8 +129,8 @@ def execute(filters=None):
         {"label": "الموقع", "fieldname": "location", "fieldtype": "Data", "width": 130},
         {"label": "نوع الإصلاح", "fieldname": "repair_type", "fieldtype": "Data", "width": 120},
         {"label": "نوع التصديق", "fieldname": "administration_approval_category", "fieldtype": "Data", "width": 150},
-        {"label": "رقم أمر الشغل", "fieldname": "work_order_number", "fieldtype": "Data", "width": 130},
-        {"label": "تاريخ أمر الشغل", "fieldname": "work_order_date", "fieldtype": "Date", "width": 120},
+        {"label": "رقم اذن الشغل", "fieldname": "work_order_number", "fieldtype": "Data", "width": 130},
+        {"label": "تاريخ اذن الشغل", "fieldname": "work_order_date", "fieldtype": "Date", "width": 120},
         {"label": "تاريخ الدخول", "fieldname": "entry_date", "fieldtype": "Date", "width": 120},
         {"label": "تاريخ الخروج", "fieldname": "leave_date", "fieldtype": "Date", "width": 120},
         {"label": "الحالة", "fieldname": "status", "fieldtype": "Data", "width": 150},
@@ -222,14 +222,14 @@ def get_summary(data):
     total_records = len(data)
     
     # Count by repair type
-    equipment_count = len([d for d in data if d.repair_type == "معدة"])
-    group_count = len([d for d in data if d.repair_type == "مجموعة"])
+    equipment_count = len([d for d in data if d.get("repair_type") == "معدة"])
+    group_count = len([d for d in data if d.get("repair_type") == "مجموعة"])
     
     # Count unique technicians only if technician_name exists in data
     technicians = set()
     for record in data:
-        if hasattr(record, 'technician_name') and record.technician_name:
-            technicians.add(record.technician_name)
+        if record.get('technician_name'):
+            technicians.add(record.get('technician_name'))
     
     summary = [
         {"label": "إجمالي السجلات", "value": total_records, "indicator": "Blue"},
@@ -244,32 +244,80 @@ def get_summary(data):
     return summary
 
 
-def get_chart_data():
-    statuses = [
-        "جار الإصلاح",
-        "جار الإصلاح -طرف خارجي",
-        "جار الإصلاح - مأمورية",
-    ]
-
+def get_chart_data(filters=None):
+    """
+    بناء الرسم البياني مع إمكانية التصفية حسب الشركة المصنعة
+    """
+    filters = filters or {}
+    
+    # بناء شروط التصفية للرسم البياني
+    chart_filters = {"status": "جار الإصلاح"}
+    
+    # إضافة فلتر الشركة المصنعة إذا كان موجوداً
+    if filters.get("manufacture"):
+        chart_filters["manufacture"] = filters.get("manufacture")
+    
+    # بيانات الرسم البياني
     data_points = []
 
-    # إجمالي المعدّات والمجموعات (كل الحالات الثلاث)
+    # إجمالي المعدّات والمجموعات
     total_equipment = frappe.db.count(
-        "Equipment Repair", {"status": ["in", statuses], "repair_type": "معدة"}
+        "Equipment Repair", {**chart_filters, "repair_type": "معدة"}
     )
     total_groups = frappe.db.count(
-        "Equipment Repair", {"status": ["in", statuses], "repair_type": "مجموعة"}
+        "Equipment Repair", {**chart_filters, "repair_type": "مجموعة"}
     )
 
-    data_points.append({"label": "إجمالي المعدات الجاري إصلاحها", "value": total_equipment})
-    data_points.append({"label": "إجمالي المجموعات الجاري إصلاحها", "value": total_groups})
+    data_points.append({"label": "إجمالي المعدات", "value": total_equipment})
+    data_points.append({"label": "إجمالي المجموعات", "value": total_groups})
 
-    # تفصيل حسب الحالة لكل نوع
-    for status in statuses:
-        eq_count = frappe.db.count("Equipment Repair", {"status": status, "repair_type": "معدة"})
-        grp_count = frappe.db.count("Equipment Repair", {"status": status, "repair_type": "مجموعة"})
-        data_points.append({"label": f"المعدات - {status}", "value": eq_count})
-        data_points.append({"label": f"المجموعات - {status}", "value": grp_count})
+    # إحصائيات حسب الشركات المصنعة
+    manufacturers = frappe.db.get_all(
+        "Equipment Repair",
+        filters=chart_filters,
+        fields=["manufacture", "repair_type", "COUNT(*) as count"],
+        group_by="manufacture, repair_type",
+        order_by="manufacture"
+    )
+
+    # تجميع البيانات حسب الشركة المصنعة
+    manufacturer_data = {}
+    for item in manufacturers:
+        manufacture = item.get("manufacture") or "غير محدد"
+        repair_type = item.get("repair_type")
+        count = item.get("count", 0)
+        
+        if manufacture not in manufacturer_data:
+            manufacturer_data[manufacture] = {"معدة": 0, "مجموعة": 0}
+        
+        manufacturer_data[manufacture][repair_type] = count
+
+    # إضافة بيانات الشركات المصنعة للرسم البياني
+    for manufacture, counts in manufacturer_data.items():
+        equipment_count = counts.get("معدة", 0)
+        group_count = counts.get("مجموعة", 0)
+        
+        if equipment_count > 0:
+            data_points.append({"label": f"{manufacture} - معدات", "value": equipment_count})
+        if group_count > 0:
+            data_points.append({"label": f"{manufacture} - مجموعات", "value": group_count})
+
+    # إذا لم يكن هناك فلتر، نضيف إحصائيات إضافية
+    if not filters.get("manufacture"):
+        # عدد المعدات حسب الوحدة (أعلى 5 وحدات)
+        units_data = frappe.db.get_all(
+            "Equipment Repair",
+            filters=chart_filters,
+            fields=["unit_name", "COUNT(*) as count"],
+            group_by="unit_name",
+            order_by="count DESC",
+            limit=5
+        )
+        
+        for unit in units_data:
+            unit_name = unit.get("unit_name") or "غير محدد"
+            count = unit.get("count", 0)
+            data_points.append({"label": f"الوحدة: {unit_name}", "value": count})
 
     labels = [d["label"] for d in data_points]
     values = [d["value"] for d in data_points]
@@ -277,9 +325,10 @@ def get_chart_data():
     chart = {
         "data": {
             "labels": labels,
-            "datasets": [{"name": "عدد", "values": values}],
+            "datasets": [{"name": "عدد المعدات", "values": values}],
         },
         "type": "bar",
         "colors": ["#2490ef"],
+        "height": 300,
     }
     return chart

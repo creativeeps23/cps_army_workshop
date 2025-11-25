@@ -10,7 +10,7 @@ frappe.ui.form.on('Army Stock Out', {
 function toggle_fields(frm) {
     // إخفاء جميع الفيلدات أولاً
     frm.set_df_property('tires', 'hidden', 1);
-    frm.set_df_property('battries', 'hidden', 1);
+    frm.set_df_property('batteries', 'hidden', 1);
     frm.set_df_property('filters', 'hidden', 1);
     frm.set_df_property('workshop_items', 'hidden', 1);
 
@@ -20,7 +20,7 @@ function toggle_fields(frm) {
     if (cat === 'كاوتش') {
         frm.set_df_property('tires', 'hidden', 0);
     } else if (cat === 'بطاريات') {
-        frm.set_df_property('battries', 'hidden', 0);
+        frm.set_df_property('batteries', 'hidden', 0);
     } else if (cat === 'فلاتر') {
         frm.set_df_property('filters', 'hidden', 0);
     } else {

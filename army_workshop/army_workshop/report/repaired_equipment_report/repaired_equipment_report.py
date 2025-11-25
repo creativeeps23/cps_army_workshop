@@ -9,7 +9,7 @@ def execute(filters=None):
     query_filters = {}
 
     # default statuses for this report (repaired / delivered)
-    default_statuses = ("تم الإصلاح", "تم التسليم")
+    default_statuses = ("تم الإصلاح",)  # تم إصلاح الخطأ هنا - جعلناها tuple
 
     # If user selected a specific status, use it, otherwise use default statuses
     if filters.get("status"):
@@ -142,8 +142,8 @@ def execute(filters=None):
         {"label": "مكان التواجد", "fieldname": "location", "fieldtype": "Data", "width": 120},
         {"label": "نوع الإصلاح", "fieldname": "repair_type", "fieldtype": "Data", "width": 100},
         {"label": "نوع التصديق", "fieldname": "administration_approval_category", "fieldtype": "Data", "width": 140},
-        {"label": "رقم أمر الشغل", "fieldname": "work_order_number", "fieldtype": "Data", "width": 130},
-        {"label": "تاريخ أمر الشغل", "fieldname": "work_order_date", "fieldtype": "Date", "width": 120},
+        {"label": "رقم اذن الشغل", "fieldname": "work_order_number", "fieldtype": "Data", "width": 130},
+        {"label": "تاريخ اذن الشغل", "fieldname": "work_order_date", "fieldtype": "Date", "width": 120},
         {"label": "تاريخ الدخول", "fieldname": "entry_date", "fieldtype": "Date", "width": 110},
         {"label": "تاريخ الخروج", "fieldname": "leave_date", "fieldtype": "Date", "width": 110},
         {"label": "الحالة", "fieldname": "status", "fieldtype": "Data", "width": 130},

@@ -1,5 +1,4 @@
 {
- "_liked_by": "[\"Administrator\"]",
  "add_total_row": 1,
  "columns": [],
  "creation": "2025-11-01 19:22:03.508356",
@@ -11,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "json": "{}",
- "modified": "2025-11-02 01:39:34.643065",
+ "modified": "2025-11-11 13:30:58.479614",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Groups Delivered",
@@ -32,6 +31,9 @@
   },
   {
    "role": "\u0627\u0644\u0645\u062e\u0627\u0632\u0646"
+  },
+  {
+   "role": "\u0645\u0643\u062a\u0628 \u0627\u0644\u062c\u0648\u062f\u0629"
   }
  ]
 }

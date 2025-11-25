@@ -2,14 +2,15 @@ frappe.query_reports["Army Item Tires Detailed Report"] = {
     "filters": [
         {
             "fieldname": "item_code",
-            "label": __("كود المنتج"),
+            "label": __("كود الصنف"),
             "fieldtype": "Data",
             "width": 80
         },
         {
             "fieldname": "item_name",
-            "label": __("اسم المنتج"),
-            "fieldtype": "Data", 
+            "label": __("اسم الصنف"),
+            "fieldtype": "Link", 
+                        "options": "Army Item Tires", 
             "width": 80
         },
        

@@ -19,29 +19,32 @@ def execute(filters=None):
 
 def get_columns(filters):
     columns = [
-        {"label": _("رقم الإصلاح"), "fieldname": "repair_id", "fieldtype": "Link", "options": "Equipment Repair", "width": 120},
-        {"label": _("اسم المعدة"), "fieldname": "equipment_name", "fieldtype": "Data", "width": 150},
-        {"label": _("طراز المعدة"), "fieldname": "equipment_model", "fieldtype": "Data", "width": 120},
-        {"label": _("رقم الشاسيه"), "fieldname": "chassis_number", "fieldtype": "Data", "width": 130},
-        {"label": _("الشركة المصنعة"), "fieldname": "manufacture", "fieldtype": "Data", "width": 140},
-        {"label": _("الرقم العسكري للمعدة"), "fieldname": "army_number", "fieldtype": "Data", "width": 100},
-        {"label": _("الوحدة"), "fieldname": "unit_name", "fieldtype": "Data", "width": 120},
-        {"label": _("الوحدة الفرعية"), "fieldname": "subunit", "fieldtype": "Data", "width": 120},
-        {"label": _("الموقع"), "fieldname": "location", "fieldtype": "Data", "width": 120},
-        {"label": _("الإدارة"), "fieldname": "department", "fieldtype": "Data", "width": 120},
+        {"label": _(" الباركود"), "fieldname": "repair_id", "fieldtype": "Link", "options": "Equipment Repair", "width": 120},
+        {"label": _("الوحدة"), "fieldname": "unit_name", "fieldtype": "Data", "width": 200},
+        {"label": _("إسم المعدة"), "fieldname": "equipment_name", "fieldtype": "Data", "width": 200},
+        {"label": _("رقم الجيش"), "fieldname": "army_number", "fieldtype": "Data", "width": 130},
+        {"label": _("رقم الشاسية"), "fieldname": "chassis_number", "fieldtype": "Data", "width": 150},
         {"label": _("نوع الإصلاح"), "fieldname": "repair_type", "fieldtype": "Data", "width": 100},
-        {"label": _("تصديق الإدارة"), "fieldname": "administration_approval_category", "fieldtype": "Data", "width": 150},
         {"label": _("تاريخ الدخول"), "fieldname": "entry_date", "fieldtype": "Date", "width": 110},
         {"label": _("تاريخ الخروج"), "fieldname": "leave_date", "fieldtype": "Date", "width": 110},
         {"label": _("الحالة"), "fieldname": "status", "fieldtype": "Data", "width": 120},
+        {"label": _("طراز المعدة"), "fieldname": "equipment_model", "fieldtype": "Data", "width": 120},
+        {"label": _("الشركة المصنعة"), "fieldname": "manufacture", "fieldtype": "Data", "width": 140},
+        {"label": _("الرقم العسكري للمعدة"), "fieldname": "army_number", "fieldtype": "Data", "width": 100},
+        {"label": _("الوحدة الفرعية"), "fieldname": "subunit", "fieldtype": "Data", "width": 120},
+        {"label": _("الموقع"), "fieldname": "location", "fieldtype": "Data", "width": 120},
+        {"label": _("الإدارة"), "fieldname": "department", "fieldtype": "Data", "width": 120},
+        {"label": _("تصديق الإدارة"), "fieldname": "administration_approval_category", "fieldtype": "Data", "width": 150},
+        
     ]
 
     # إضافة أعمدة أمر الشغل بناءً على نوع التصديق
     columns.extend([
-        {"label": _("رقم أمر الشغل"), "fieldname": "work_order_number", "fieldtype": "Data", "width": 130},
-        {"label": _("تاريخ أمر الشغل"), "fieldname": "work_order_date", "fieldtype": "Date", "width": 120},
+        {"label": _("رقم اذن الشغل"), "fieldname": "work_order_number", "fieldtype": "Data", "width": 130},
+        {"label": _("تاريخ اذن الشغل"), "fieldname": "work_order_date", "fieldtype": "Date", "width": 120},
     ])
 
+    # إضافة أعمدة المندوب إذا تم اختيار عرض بيانات المندوب
     # إضافة أعمدة المندوب إذا تم اختيار عرض بيانات المندوب
     if filters.get("show_delegate"):
         columns.extend([
