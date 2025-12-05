@@ -65,6 +65,7 @@ function toggleSections(frm) {
     const sections = [
         'with_administration_approval_section',
         'without_administration_approval_section', 
+        ,
         'group_section',
         'team_data',
         'external_repair_tab'
@@ -84,8 +85,8 @@ function toggleSections(frm) {
             break;
     }
 
-    // التحكم في أقسام نوع الإصلاح - إظهار group_section إذا كان repair_type = مجموعة
-    if (frm.doc.repair_type === "Part" || frm.doc.repair_type === "مجموعة") {
+    // التحكم في أقسام نوع الإصلاح
+    if (frm.doc.repair_type === "مجموعة") {
         frm.set_df_property('group_type', 'hidden', 0);
         frm.set_df_property('group_section', 'hidden', 0);
     }
@@ -96,30 +97,22 @@ function toggleSections(frm) {
     }
 
     // ✅ إظهار external_repair_tab إذا كان ex_repair معلم
-if (cint(frm.doc.ex_repair) === 1) {
-    try {
-        // إذا كان Tab Break
-        frm.get_field('external_repair_tab').tab.hide(false);
-    } catch(e) {
-        // إذا كان Section Break
-        frm.set_df_property('مندوب_الشركة', 'hidden', 0);
-        frm.set_df_property('الشركة', 'hidden', 0);
-        frm.set_df_property('تاريخ_التسليم_للشركة', 'hidden', 0);
-        frm.set_df_property('تاريخ_الإستلام_من_الشركة', 'hidden', 0);
-        frm.set_df_property('رقم_التواصل', 'hidden', 0);
-    }
-} else {
-    try {
-        frm.get_field('external_repair_tab').tab.hide(true);
-    } catch(e) {
-        frm.set_df_property('مندوب_الشركة', 'hidden', 1);
-        frm.set_df_property('الشركة', 'hidden', 1);
-        frm.set_df_property('تاريخ_التسليم_للشركة', 'hidden', 1);
-        frm.set_df_property('تاريخ_الإستلام_من_الشركة', 'hidden', 1);
-        frm.set_df_property('رقم_التواصل', 'hidden', 1);
-    }
-}
+    if (cint(frm.doc.ex_repair) === 1) {
+        try {
+            // إذا كان Tab Break
+            frm.get_field('external_repair_tab').tab.hide(false);
+        } catch(e) {
+            // إذا كان Section Break
+            frm.set_df_property('مندوب_الشركة', 'hidden', 0);
+            frm.set_df_property('الشركة', 'hidden', 0);
+            frm.set_df_property('تاريخ_التسليم_للشركة', 'hidden', 0);
+            frm.set_df_property('تاريخ_الإستلام_من_الشركة', 'hidden', 0);
 
+            frm.set_df_property('رقم_التواصل', 'hidden', 0);
+            
+            
+        }
+    }
 }
 
 function updateFieldRequirements(frm) {
@@ -127,7 +120,7 @@ function updateFieldRequirements(frm) {
     const fields = [
         'leave_date',
         'تاريخ_إنتهاء_الأعمال',
-
+        'contact_number',
         'delivery_date_to_company',
         'company_representative',
         'receive_date_from_company'
@@ -151,7 +144,7 @@ function updateFieldRequirements(frm) {
 
     // حالة جار الإصلاح -طرف خارجي
     if (frm.doc.status === 'جار الإصلاح -طرف خارجي') {
- 
+        frm.set_df_property('contact_number', 'reqd', 1);
         frm.set_df_property('delivery_date_to_company', 'reqd', 1);
         frm.set_df_property('company_representative', 'reqd', 1);
     }
@@ -187,13 +180,6 @@ function updateFieldVisibility(frm) {
     frm.set_df_property('company_representative', 'hidden', frm.doc.status !== 'جار الإصلاح -طرف خارجي');
     frm.set_df_property('receive_date_from_company', 'hidden', !(frm.doc.status === 'تم الإصلاح' && frm.doc.ex_repair));
 }
-
-// دالة للتحقق من صلاحيات المستخدم
-function checkUserPermission(allowedRoles) {
-    const userRoles = frappe.user_roles;
-    return allowedRoles.some(role => userRoles.includes(role));
-}
-
 function addStatusUpdateButton(frm) {
     if (frm.custom_buttons) {
         const buttonsToKeep = [];
@@ -213,9 +199,7 @@ function addStatusUpdateButton(frm) {
 
     const currentStatus = frm.doc.status;
     let nextStatus = '';
-    let allowedRoles = [];
 
-    // تحديد الحالة التالية والصلاحيات المسموح بها
     switch(currentStatus) {
         case 'قيد الفحص':
             if (frm.doc.repair_category === 'مأمورية إصلاح خارجية') {
@@ -223,7 +207,6 @@ function addStatusUpdateButton(frm) {
             } else {
                 nextStatus = 'جار الإصلاح';
             }
-            allowedRoles = ['مكتب الإجراءات', 'مكتب الجودة', 'الورشة'];
             break;
         
         case 'جار الإصلاح':
@@ -234,37 +217,28 @@ function addStatusUpdateButton(frm) {
             } else {
                 nextStatus = 'تم الإصلاح';
             }
-            allowedRoles = ['مكتب الإجراءات', 'مكتب الجودة', 'الورشة'];
             break;
         
         case 'جار الإصلاح -طرف خارجي':
         case 'جار الإصلاح - مأمورية':
             nextStatus = 'تم الإصلاح';
-            allowedRoles = ['مكتب الإجراءات', 'مكتب الجودة', 'الورشة'];
             break;
         
         case 'تم الإصلاح':
-            nextStatus = 'تم الإعتماد من الإجراءات';
-            allowedRoles = ['مكتب الإجراءات']; // فقط مكتب الإجراءات
-            break;
-        
-        case 'تم الإعتماد من الإجراءات':
             nextStatus = 'تم التسليم';
-            allowedRoles = ['مكتب الإجراءات', 'مكتب الجودة']; // مكتب الإجراءات والجودة
             break;
         
         case 'تم التسليم':
-            return; // لا تظهر زر في الحالة النهائية
+            return;
         
         default:
             if (!currentStatus || currentStatus === '') {
                 nextStatus = 'قيد الفحص';
-                allowedRoles = ['مكتب الإجراءات', 'مكتب الجودة', 'الورشة'];
             }
     }
 
-    // التحقق من صلاحية المستخدم
-    if (nextStatus && checkUserPermission(allowedRoles)) {
+    // زر التحديث الأساسي
+    if (nextStatus) {
         frm.add_custom_button(__('تحديث إلى: ' + nextStatus), function() {
             frm.set_value('status', nextStatus);
             
@@ -283,6 +257,30 @@ function addStatusUpdateButton(frm) {
             });
         }, __('تحديث الحالة'));
     }
+
+    // زر "تعذر الإصلاح" داخل "تحديث الحالة"
+    if (currentStatus === 'جار الإصلاح' || currentStatus === 'جار الإصلاح -طرف خارجي') {
+        frm.add_custom_button(__('تعذر الإصلاح'), function() {
+            frm.set_value('status', 'تعذر الإصلاح');
+            frm.save();
+            frappe.show_alert({
+                message: __('تم تحديث الحالة إلى: تعذر الإصلاح'),
+                indicator: 'orange'
+            });
+        }, __('تحديث الحالة'));
+    }
+
+    // زر "رجوع إلى جار الإصلاح" داخل "تحديث الحالة"
+    if (currentStatus === 'جار الإصلاح -طرف خارجي') {
+        frm.add_custom_button(__('رجوع إلى جار الإصلاح'), function() {
+            frm.set_value('status', 'جار الإصلاح');
+            frm.save();
+            frappe.show_alert({
+                message: __('تم تحديث الحالة إلى: جار الإصلاح'),
+                indicator: 'blue'
+            });
+        }, __('تحديث الحالة'));
+    }
 }
 
 function validateRequiredFields(frm) {
@@ -295,46 +293,68 @@ function validateRequiredFields(frm) {
     }
 
     if (frm.doc.status === 'جار الإصلاح -طرف خارجي') {
-        if (!frm.doc.مندوب_الشركة) {
-            frappe.throw(__('حقل مندوب الشركة إلزامي عندما تكون الحالة "جار الإصلاح -طرف خارجي". يرجى ملء هذا الحقل أولاً.'));
-        }
-       
+        
         if (!frm.doc.تاريخ_التسليم_للشركة) {
             frappe.throw(__('حقل تاريخ التسليم للشركة إلزامي عندما تكون الحالة "جار الإصلاح -طرف خارجي". يرجى ملء هذا الحقل أولاً.'));
         }
-        
+        if (!frm.doc.مندوب_الشركة) {
+            frappe.throw(__('حقل مندوب الشركة إلزامي عندما تكون الحالة "جار الإصلاح -طرف خارجي". يرجى ملء هذا الحقل أولاً.'));
+        }
     }
 
-    if (frm.doc.status === 'تم الإصلاح' && frm.doc.ex_repair) {
-        if (!frm.doc.تاريخ_الإستلام_من_الشركة) {
+    if (frm.doc.status === 'تم الإصلاح' && frm.doc.تاريخ_الإستلام_من_الشركة) {
+        if (!frm.doc.receive_date_from_company) {
             frappe.throw(__('حقل تاريخ الإستلام من الشركة إلزامي عندما تكون الحالة "تم الإصلاح" والإصلاح خارجي. يرجى ملء هذا الحقل أولاً.'));
         }
     }
 }
 
-frappe.ui.form.on('Equipment Repair', {
+
+          frappe.ui.form.on('Equipment Repair', {
     after_save: function(frm) {
-        // التحقق من وجود بيانات في حقل qr_code_image
-        if (!frm.doc.qr_code_image) {
-            frappe.call({
-                method: "army_workshop.api.barcode_utils.create_and_attach_barcode",
-                args: {
-                    doctype: frm.doc.doctype,
-                    docname: frm.doc.name
-                },
-                callback: function(r) {
-                    if (r.message) {
-                        frappe.show_alert({message: "✅ QR Code generated successfully!", indicator: 'green'});
-                        frm.reload_doc();
-                    } else {
-                        frappe.msgprint("❌ QR Code not generated.");
-                    }
+        frappe.call({
+            method: "army_workshop.api.barcode_utils.create_and_attach_barcode",
+            args: {
+                doctype: frm.doc.doctype,
+                docname: frm.doc.name
+            },
+            callback: function(r) {
+                if (r.message) {
+                    frappe.show_alert({message: "✅ Barcode generated successfully!", indicator: 'green'});
+                    frm.reload_doc();
+                } else {
+                    frappe.msgprint("❌ Barcode not generated.");
                 }
-            });
-        } else {
-        }
+            }
+        });
     }
 });
+
+
+
+frappe.ui.form.on('Equipment Repair', {
+    after_save: function(frm) {
+        frappe.call({
+            method: "army_workshop.api.barcode_utils.create_and_attach_both_codes",
+            args: {
+                doctype: frm.doc.doctype,
+                docname: frm.doc.name
+            },
+            callback: function(r) {
+                if (r.message) {
+                    frappe.show_alert({
+                        message: "✅ تم توليد الباركود و QR Code بنجاح!", 
+                        indicator: 'green'
+                    });
+                    frm.reload_doc();
+                } else {
+                    frappe.msgprint("❌ لم يتم توليد الرموز.");
+                }
+            }
+        });
+    }
+});
+
 
 frappe.ui.form.on('Equipment Repair', {
     equipment_name: function(frm) {

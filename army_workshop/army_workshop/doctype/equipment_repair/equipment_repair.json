@@ -28,7 +28,6 @@
   "manufacture",
   "\u062a\u0627\u0631\u064a\u062e_\u0625\u0646\u062a\u0647\u0627\u0621_\u0627\u0644\u0623\u0639\u0645\u0627\u0644",
   "column_break_wszzd",
-  "equipment_model",
   "chassis_number",
   "entry_date",
   "leave_date",
@@ -62,14 +61,14 @@
   "work_order_date1",
   "section_break_v7cle",
   "technical_team",
-  "\u0623\u0639\u0645\u0627\u0644_\u0627\u0644\u0625\u0635\u0644\u0627\u062d_tab",
-  "mechanic",
-  "electric",
-  "others",
   "\u0646\u0645\u0648\u0630\u062c_\u062a\u0641\u062a\u064a\u0634_tab",
   "\u0623\u0639\u0645\u0627\u0644_\u0627\u0644\u0645\u064a\u0643\u0627\u0646\u064a\u0643\u0627",
   "\u0623\u0639\u0645\u0627\u0644_\u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621",
   "\u0623\u0639\u0645\u0627\u0644_\u062a\u0643\u0645\u064a\u0644\u064a\u0629",
+  "\u0623\u0639\u0645\u0627\u0644_\u0627\u0644\u0625\u0635\u0644\u0627\u062d_tab",
+  "mechanic",
+  "electric",
+  "others",
   "\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_tab",
   "tires",
   "batteries",
@@ -109,7 +108,7 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Data",
-   "options": ".YY..MM.-0",
+   "options": "ER-.0.",
    "read_only": 1
   },
   {
@@ -129,7 +128,6 @@
    "fieldname": "equipment_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "\u0627\u0633\u0645 \u0627\u0644\u0645\u0639\u062f\u0629",
    "read_only": 1
   },
@@ -146,19 +144,13 @@
    "fetch_from": "equipment_name.unit_name",
    "fieldname": "unit_name",
    "fieldtype": "Data",
+   "in_standard_filter": 1,
    "label": "\u0627\u0633\u0645 \u0627\u0644\u0648\u062d\u062f\u0629",
    "read_only": 1
   },
   {
    "fieldname": "column_break_wszzd",
    "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "equipment_name.equipment_model",
-   "fieldname": "equipment_model",
-   "fieldtype": "Data",
-   "label": "\u0637\u0631\u0627\u0632 \u0627\u0644\u0645\u0639\u062f\u0629",
-   "read_only": 1
   },
   {
    "fetch_from": "equipment_name.chassis_number",
@@ -185,7 +177,6 @@
    "fieldname": "delegated_army_number",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0639\u0633\u0643\u0631\u064a \u0644\u0644\u0645\u0646\u062f\u0648\u0628",
    "read_only": 1
   },
@@ -337,6 +328,7 @@
    "fieldname": "repair_type",
    "fieldtype": "Select",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0646\u0648\u0639 \u0627\u0644\u0625\u0635\u0644\u0627\u062d",
    "options": "\n\u0645\u0639\u062f\u0629\n\u0645\u062c\u0645\u0648\u0639\u0629",
    "reqd": 1
@@ -356,7 +348,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "\u0627\u0644\u062d\u0627\u0644\u0629",
-   "options": "\n\u0642\u064a\u062f \u0627\u0644\u0641\u062d\u0635\n\u062c\u0627\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d\n\u062c\u0627\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d -\u0637\u0631\u0641 \u062e\u0627\u0631\u062c\u064a\n\u062c\u0627\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d - \u0645\u0623\u0645\u0648\u0631\u064a\u0629\n\u062a\u0645 \u0627\u0644\u0625\u0635\u0644\u0627\u062d\n\u062a\u0645 \u0627\u0644\u062a\u0633\u0644\u064a\u0645"
+   "options": "\n\u0642\u064a\u062f \u0627\u0644\u0641\u062d\u0635\n\u062c\u0627\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d\n\u062c\u0627\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d -\u0637\u0631\u0641 \u062e\u0627\u0631\u062c\u064a\n\u062c\u0627\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d - \u0645\u0623\u0645\u0648\u0631\u064a\u0629\n\u062a\u0645 \u0627\u0644\u0625\u0635\u0644\u0627\u062d\n\u062a\u0645 \u0627\u0644\u062a\u0633\u0644\u064a\u0645\n\u062a\u0639\u0630\u0631 \u0627\u0644\u0625\u0635\u0644\u0627\u062d"
   },
   {
    "fieldname": "section_break_v7cle",
@@ -400,8 +392,7 @@
    "fieldname": "\u0628\u064a\u0627\u0646_\u0642\u0637\u0639_\u0627\u0644\u063a\u064a\u0627\u0631_\u0627\u0644\u0645\u0646\u0635\u0631\u0641\u0629",
    "fieldtype": "Table",
    "label": "\u0642\u0637\u0639 \u0627\u0644\u063a\u064a\u0627\u0631 \u0648\u0627\u0644\u0645\u062a\u062f\u0627\u0648\u0644",
-   "options": "Workshop Items",
-   "read_only": 1
+   "options": "Workshop Items"
   },
   {
    "fetch_from": "equipment_name.subunit",
@@ -497,22 +488,19 @@
    "fieldname": "tires",
    "fieldtype": "Table",
    "label": "\u0627\u0644\u0643\u0627\u0648\u062a\u0634",
-   "options": "Tires",
-   "read_only": 1
+   "options": "Tires"
   },
   {
    "fieldname": "batteries",
    "fieldtype": "Table",
    "label": "\u0627\u0644\u0628\u0637\u0627\u0631\u064a\u0627\u062a",
-   "options": "Batteries",
-   "read_only": 1
+   "options": "Batteries"
   },
   {
    "fieldname": "filters",
    "fieldtype": "Table",
    "label": "\u0627\u0644\u0641\u0644\u0627\u062a\u0631",
-   "options": "Filters",
-   "read_only": 1
+   "options": "Filters"
   },
   {
    "fieldname": "\u0646\u0645\u0648\u0630\u062c_\u062a\u0641\u062a\u064a\u0634_tab",
@@ -598,6 +586,7 @@
    "fieldtype": "Data",
    "hidden": 1,
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0645\u0639\u062f\u0629/\u0645\u062c\u0645\u0648\u0639\u0629",
    "read_only": 1
   },
@@ -659,7 +648,8 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-25 22:39:09.693944",
+ "make_attachments_public": 1,
+ "modified": "2025-12-02 17:20:30.530906",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment Repair",

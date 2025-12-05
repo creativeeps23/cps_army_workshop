@@ -121,7 +121,7 @@ def execute(filters=None):
         {"label": "رقم الإصلاح", "fieldname": "repair_id", "fieldtype": "Link", "options": "Equipment Repair", "width": 130},
         {"label": "اسم المعدة", "fieldname": "equipment_name", "fieldtype": "Data", "width": 150},
         {"label": "طراز المعدة", "fieldname": "equipment_model", "fieldtype": "Data", "width": 130},
-        {"label": "الرقم العسكري", "fieldname": "army_number", "fieldtype": "Data", "width": 130},
+        {"label": "رقم الجيش", "fieldname": "army_number", "fieldtype": "Data", "width": 130},
         {"label": "رقم الشاسيه", "fieldname": "chassis_number", "fieldtype": "Data", "width": 130},
         {"label": "الشركة المصنعة", "fieldname": "manufacture", "fieldtype": "Data", "width": 140},
         {"label": "الوحدة", "fieldname": "unit_name", "fieldtype": "Data", "width": 130},

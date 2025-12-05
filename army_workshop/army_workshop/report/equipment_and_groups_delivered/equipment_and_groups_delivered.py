@@ -31,7 +31,7 @@ def get_columns(filters):
         {"label": _("طراز المعدة"), "fieldname": "equipment_model", "fieldtype": "Data", "width": 120},
         
         {"label": _("الشركة المصنعة"), "fieldname": "manufacture", "fieldtype": "Data", "width": 140},
-        {"label": _("الرقم العسكري للمعدة"), "fieldname": "army_number", "fieldtype": "Data", "width": 100},
+
 
         {"label": _("الوحدة الفرعية"), "fieldname": "subunit", "fieldtype": "Data", "width": 120},
         {"label": _("الموقع"), "fieldname": "location", "fieldtype": "Data", "width": 120},

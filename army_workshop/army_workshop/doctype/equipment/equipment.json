@@ -1,4 +1,5 @@
 {
+ "_comments": "[{\"comment\": \"<div class=\\\"ql-editor read-mode\\\"><p>Army Department</p><p>Army Unit</p><p>Manufacture</p><p>Army ...\", \"by\": \"Administrator\", \"name\": \"mmicjr6vf2\"}]",
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
@@ -110,16 +111,17 @@
    "allow_in_quick_entry": 1,
    "fieldname": "page_number",
    "fieldtype": "Data",
-   "label": "\u0631\u0642\u0645 \u0627\u0644\u0635\u0641\u062d\u0629"
+   "label": "\u0627\u0644\u0633\u0639\u0629 / \u0627\u0644\u062d\u0645\u0648\u0644\u0629"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "subunit",
    "fieldtype": "Link",
-   "label": "\u0627\u0644\u0648\u062d\u062f\u0629 \u0627\u0644\u0641\u0631\u0639\u064a\u0629",
+   "label": "\u0627\u0644\u062a\u0634\u0643\u064a\u0644",
    "options": "Army Subunit"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "equipment_name",
    "fieldtype": "Data",
    "in_preview": 1,
@@ -128,7 +130,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-25 16:59:35.760862",
+ "modified": "2025-12-02 20:20:16.516919",
  "modified_by": "Administrator",
  "module": "Army Workshop",
  "name": "Equipment",
@@ -187,6 +189,7 @@
   }
  ],
  "quick_entry": 1,
+ "row_format": "Dynamic",
  "show_preview_popup": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
